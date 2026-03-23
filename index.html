@@ -1,0 +1,3775 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Coolify — Thức Dậy Khác Đi.</title>
+<meta name="description" content="Coolify — Ngủ đúng cách, sống tốt hơn. CoolTouch® giữ mát tức thì. AirGuard™ giữ sạch và khô thoáng. Đổi trả 30 ngày miễn phí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* =============================================================
+   COOLIFY — DESIGN SYSTEM v9
+   $1B Brand Standard · CTO Approved
+   
+   GRID:       8px base unit — all spacing × multiples of 8
+   TYPE:       Cormorant Garamond (display) + Be Vietnam Pro (body)
+   PALETTE:    Warm cream · Oak wood accent · Near-black ink
+   MOTION:     Staggered reveals · Spring physics · Custom cursor
+   ============================================================= */
+
+/* ─────────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────────── */
+:root {
+  /* ── Surfaces ── */
+  --s0:  #FDFAF6;   /* page background */
+  --s1:  #F5F0E8;   /* card / section alt */
+  --s2:  #EBE3D5;   /* subtle divide */
+  --s3:  #DDD2C0;   /* strong border */
+
+  /* ── Ink ── */
+  --i0:  #0D0B08;   /* primary text */
+  --i1:  #1C1914;   /* headings */
+  --i2:  #28211A;   /* dark sections */
+  --i3:  #342C24;   /* slightly lighter dark */
+
+  /* ── Text utility ── */
+  --t1:  #4A4038;   /* body */
+  --t2:  #7D6E60;   /* secondary */
+  --t3:  #A89080;   /* muted */
+
+  /* ── Lines ── */
+  --ln:  rgba(13,11,8,.08);
+  --ln2: rgba(13,11,8,.05);
+  --ln3: rgba(13,11,8,.03);
+
+  /* ── Accent: oak wood, derived from product imagery ── */
+  --a0:  #8B6B45;
+  --a1:  #A6845D;
+  --a2:  #C4A47E;
+  --a3:  #DEC09A;
+  --abg: rgba(139,107,69,.08);
+  --abd: rgba(139,107,69,.20);
+
+  /* ── On-dark accent ── */
+  --ad0: #C4A47E;
+  --ad1: #DEC09A;
+
+  /* ── Status ── */
+  --ok:  #2A6A45;
+  --err: #AA2B2B;
+
+  /* ── Fonts ── */
+  --ff: 'Cormorant Garamond','Times New Roman',serif;
+  --fb: 'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
+  --fm: 'DM Mono',monospace;
+
+  /* ── Easing ── */
+  --ease:   cubic-bezier(.4,0,.2,1);
+  --out:    cubic-bezier(.16,1,.3,1);
+  --spring: cubic-bezier(.34,1.56,.64,1);
+  --expo:   cubic-bezier(.87,0,.13,1);
+
+  /* ── Radii ── */
+  --r0: 2px;
+  --r1: 4px;
+  --r2: 8px;
+  --r3: 16px;
+  --r4: 24px;
+  --r5: 32px;
+
+  /* ── Elevation ── */
+  --e1: 0 1px 3px rgba(13,11,8,.05), 0 1px 2px rgba(13,11,8,.04);
+  --e2: 0 4px 16px rgba(13,11,8,.07), 0 2px 6px rgba(13,11,8,.04);
+  --e3: 0 12px 40px rgba(13,11,8,.09), 0 4px 12px rgba(13,11,8,.06);
+  --e4: 0 24px 72px rgba(13,11,8,.12), 0 8px 22px rgba(13,11,8,.07);
+
+  /* ── 8px spacing scale ── */
+  --sp1: 8px;   --sp2: 16px;  --sp3: 24px;  --sp4: 32px;
+  --sp5: 40px;  --sp6: 48px;  --sp7: 56px;  --sp8: 64px;
+  --sp9: 72px;  --sp10: 80px; --sp12: 96px; --sp16: 128px;
+}
+
+/* ─────────────────────────────────────────────
+   RESET
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+}
+body {
+  font-family: var(--fb);
+  background: var(--s0);
+  color: var(--i0);
+  overflow-x: hidden;
+  line-height: 1.65;
+  font-size: 17px;
+}
+img, video { display: block; max-width: 100%; height: auto }
+a { text-decoration: none; color: inherit }
+button { border: none; background: none; font-family: var(--fb); cursor: pointer; color: inherit; -webkit-tap-highlight-color: transparent }
+ul, ol { list-style: none }
+::selection { background: var(--a3); color: var(--i0) }
+::-webkit-scrollbar { width: 3px }
+::-webkit-scrollbar-track { background: transparent }
+::-webkit-scrollbar-thumb { background: var(--a2); border-radius: 99px }
+
+
+
+/* ─────────────────────────────────────────────
+   PAGE INTRO ANIMATION
+───────────────────────────────────────────── */
+#page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  background: var(--i2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: introOut 1s .8s var(--expo) forwards;
+}
+#page-intro .intro-logo {
+  font-family: var(--ff);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: 300;
+  color: rgba(253,250,246,.9);
+  letter-spacing: .06em;
+  opacity: 0;
+  animation: introLogoIn .6s .1s var(--out) forwards;
+}
+#page-intro .intro-logo img {
+  height: 48px;
+  filter: brightness(0) invert(1);
+  display: block;
+  margin: 0 auto;
+  opacity: 0;
+  animation: introLogoIn .6s .1s var(--out) forwards;
+}
+@keyframes introLogoIn {
+  from { opacity: 0; transform: translateY(12px) }
+  to   { opacity: 1; transform: none }
+}
+@keyframes introOut {
+  from { opacity: 1 }
+  to   { opacity: 0; pointer-events: none }
+}
+
+/* ─────────────────────────────────────────────
+   OVERLINE LABEL
+───────────────────────────────────────────── */
+.overline {
+  font-family: var(--fm);
+  font-size: .56rem;
+  font-weight: 400;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--a0);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.overline::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+  opacity: .7;
+}
+.overline-light { color: var(--ad0) }
+.overline-light::before { background: var(--ad0) }
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp1);
+  border-radius: var(--r0);
+  font-family: var(--fb);
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  transition: all .34s var(--out);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .28s;
+}
+.btn:hover::after { opacity: 1 }
+.btn:active { transform: scale(.97) !important }
+
+.btn-xl { padding: 20px 60px; font-size: .72rem }
+.btn-lg { padding: 17px 48px; font-size: .68rem }
+.btn-md { padding: 13px 36px; font-size: .65rem }
+.btn-sm { padding: 10px 24px; font-size: .61rem }
+.btn-xs { padding: 8px 16px; font-size: .57rem }
+
+.btn-primary {
+  background: var(--i0);
+  color: var(--s0);
+  box-shadow: 0 2px 8px rgba(13,11,8,.18);
+}
+.btn-primary:hover {
+  background: var(--i1);
+  box-shadow: 0 8px 28px rgba(13,11,8,.26);
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background: var(--a0);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(139,107,69,.28);
+}
+.btn-accent:hover {
+  background: var(--a1);
+  box-shadow: 0 8px 30px rgba(139,107,69,.4);
+  transform: translateY(-2px);
+}
+
+.btn-ghost-w {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.28);
+  backdrop-filter: blur(8px) saturate(1.4);
+}
+.btn-ghost-w:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.6);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--i0);
+  border: 1px solid var(--s3);
+}
+.btn-outline:hover {
+  border-color: rgba(13,11,8,.3);
+  background: rgba(13,11,8,.03);
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────────── */
+[data-rv] {
+  opacity: 0;
+  transition: opacity .95s var(--out), transform .95s var(--out);
+}
+[data-rv="up"]    { transform: translateY(32px) }
+[data-rv="down"]  { transform: translateY(-32px) }
+[data-rv="left"]  { transform: translateX(-32px) }
+[data-rv="right"] { transform: translateX(32px) }
+[data-rv="scale"] { transform: scale(.94) }
+[data-rv="fade"]  { }
+[data-rv].revealed { opacity: 1; transform: none }
+
+[data-d="1"] { transition-delay: .08s }
+[data-d="2"] { transition-delay: .16s }
+[data-d="3"] { transition-delay: .24s }
+[data-d="4"] { transition-delay: .32s }
+[data-d="5"] { transition-delay: .40s }
+[data-d="6"] { transition-delay: .48s }
+[data-d="7"] { transition-delay: .56s }
+[data-d="8"] { transition-delay: .64s }
+
+/* ─────────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────────── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 800;
+  height: 80px;
+  padding: 0 var(--sp9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: height .5s var(--out), background .5s var(--out),
+              border-color .5s var(--out), box-shadow .5s var(--out);
+}
+#nav.scrolled {
+  height: 64px;
+  background: rgba(253,250,246,.97);
+  backdrop-filter: blur(32px) saturate(1.8);
+  border-bottom: 1px solid var(--ln);
+  box-shadow: 0 1px 24px rgba(13,11,8,.05);
+}
+
+/* Brand */
+.nav-brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0 }
+.nav-logo-img {
+  height: 30px;
+  display: block;
+  transition: filter .35s, opacity .35s;
+}
+#nav:not(.scrolled) .nav-logo-img { filter: brightness(0) invert(1) }
+.nav-wordmark {
+  font-family: var(--ff);
+  font-size: 1.7rem;
+  font-weight: 300;
+  letter-spacing: .04em;
+  transition: color .35s;
+  display: none; /* shows only if img fails */
+}
+#nav:not(.scrolled) .nav-wordmark { color: rgba(253,250,246,.92) }
+#nav.scrolled        .nav-wordmark { color: var(--i0) }
+
+/* Center nav */
+.nav-center {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center;
+}
+.nav-link {
+  padding: var(--sp1) var(--sp2);
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transition: color .22s;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: 50%;
+  height: 1px;
+  background: currentColor;
+  transition: left .3s var(--out), right .3s var(--out);
+  opacity: .5;
+}
+.nav-link:hover::after { left: var(--sp2); right: var(--sp2) }
+
+#nav:not(.scrolled) .nav-link { color: rgba(255,255,255,.48) }
+#nav.scrolled        .nav-link { color: var(--t2) }
+#nav:not(.scrolled) .nav-link:hover { color: rgba(255,255,255,.95) }
+#nav.scrolled        .nav-link:hover { color: var(--i0) }
+
+/* Right cluster */
+.nav-right { display: flex; align-items: center; gap: var(--sp1) }
+
+/* Cart */
+.nav-cart {
+  position: relative;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r1);
+  transition: all .22s;
+}
+#nav:not(.scrolled) .nav-cart { color: rgba(255,255,255,.75) }
+#nav.scrolled        .nav-cart { color: var(--i1) }
+.nav-cart:hover { transform: scale(1.1) }
+#nav.scrolled .nav-cart:hover        { color: var(--a0) }
+#nav:not(.scrolled) .nav-cart:hover  { color: #fff }
+
+.nav-pip {
+  position: absolute; top: 4px; right: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--a0); color: #fff;
+  font-size: .44rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transform: scale(0);
+  transition: transform .3s var(--spring);
+  border: 2px solid transparent;
+}
+#nav.scrolled .nav-pip { border-color: var(--s0) }
+.nav-pip.on { transform: scale(1) }
+
+/* CTA — shows only after scroll */
+.nav-cta { display: none }
+#nav.scrolled .nav-cta { display: inline-flex }
+
+/* Hamburger */
+.nav-ham {
+  display: none;
+  flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  width: 44px; height: 44px;
+}
+.nav-ham span {
+  display: block; width: 22px; height: 1.5px;
+  transition: all .3s; transform-origin: center;
+}
+#nav:not(.scrolled) .nav-ham span { background: rgba(255,255,255,.8) }
+#nav.scrolled        .nav-ham span { background: var(--i0) }
+.nav-ham.open span:nth-child(1) { transform: rotate(45deg) translateY(6.5px) }
+.nav-ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0) }
+.nav-ham.open span:nth-child(3) { transform: rotate(-45deg) translateY(-6.5px) }
+
+/* ─ Mobile menu ─ */
+#mobile-nav {
+  position: fixed; inset: 0; z-index: 750;
+  background: var(--i2);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transform: translateX(100%);
+  transition: transform .52s var(--expo);
+}
+#mobile-nav.open { transform: translateX(0) }
+.mnav-close {
+  position: absolute; top: var(--sp3); right: var(--sp3);
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(253,250,246,.3); font-size: 1.3rem;
+  transition: color .2s;
+}
+.mnav-close:hover { color: rgba(253,250,246,.7) }
+.mnav-link {
+  font-family: var(--ff);
+  font-size: clamp(2.8rem, 9vw, 5.2rem);
+  font-weight: 300;
+  color: rgba(253,250,246,.14);
+  padding: 10px 0;
+  transition: color .2s, transform .25s var(--out), padding-left .25s var(--out);
+}
+.mnav-link:hover {
+  color: var(--ad0);
+  padding-left: 12px;
+}
+.mnav-footer {
+  position: absolute; bottom: var(--sp6);
+  font-size: .76rem; color: rgba(253,250,246,.22); text-align: center;
+}
+.mnav-footer a { color: var(--ad0) }
+
+/* ─────────────────────────────────────────────
+   HERO — CINEMATIC FULLSCREEN VIDEO
+───────────────────────────────────────────── */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 640px;
+  max-height: 1080px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  pointer-events: none;
+}
+
+/* Grain texture for cinematic feel */
+.hero-grain {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+/* Scrim: dark top for nav + dark bottom for text */
+.hero-scrim {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(180deg,
+      rgba(8,6,4,.55)  0%,
+      rgba(8,6,4,.08) 28%,
+      rgba(8,6,4,.00) 48%,
+      rgba(8,6,4,.58) 70%,
+      rgba(8,6,4,.92) 100%
+    );
+}
+
+/* Content */
+.hero-body {
+  position: relative; z-index: 3;
+  width: 100%;
+  padding: 0 8vw 88px;
+}
+
+.hero-eyebrow {
+  font-family: var(--fm);
+  font-size: .64rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(253,250,246,.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--sp3);
+  opacity: 0;
+  animation: hIn .8s .1s var(--out) forwards;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--a3); opacity: .9;
+}
+
+.hero-h1 {
+  font-family: var(--ff);
+  font-size: clamp(3rem, 4.2vw, 5.4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -.018em;
+  color: rgba(253,250,246,.96);
+  margin-bottom: var(--sp4);
+  max-width: 700px;
+  opacity: 0;
+  animation: hIn 1.2s .22s var(--out) forwards;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--a3);
+  /* Extra letter-spacing for italic elegance */
+  letter-spacing: -.015em;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(253,250,246,.48);
+  line-height: 1.85;
+  max-width: 540px;
+  margin-bottom: var(--sp6);
+  opacity: 0;
+  animation: hIn .8s .38s var(--out) forwards;
+}
+.hero-sub strong { color: rgba(253,250,246,.72); font-weight: 600 }
+
+.hero-btns {
+  display: flex; gap: var(--sp2); flex-wrap: wrap;
+  opacity: 0;
+  animation: hIn .8s .52s var(--out) forwards;
+}
+
+/* Divider line */
+.hero-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(253,250,246,.1);
+  margin: 44px 0 28px;
+  opacity: 0;
+  animation: hIn .6s .62s var(--out) forwards;
+}
+
+/* Stats */
+.hero-stats {
+  display: flex; gap: 0; flex-wrap: nowrap;
+  opacity: 0;
+  animation: hIn .8s .68s var(--out) forwards;
+}
+.hero-stat {
+  padding: 0 28px;
+  border-right: 1px solid rgba(253,250,246,.1);
+  flex-shrink: 0;
+}
+.hero-stat:first-child { padding-left: 0 }
+.hero-stat:last-child  { border-right: none }
+.hero-stat-n {
+  font-family: var(--ff);
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: rgba(253,250,246,.88);
+  line-height: 1; display: block;
+}
+.hero-stat-l {
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(253,250,246,.32); margin-top: 5px;
+}
+
+/* scroll indicator → see improved version below */
+
+@keyframes hIn {
+  from { opacity: 0; transform: translateY(20px) }
+  to   { opacity: 1; transform: none }
+}
+
+
+/* ─────────────────────────────────────────────
+   SCROLL PROGRESS BAR (top of page)
+───────────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--a0), var(--a2));
+  z-index: 9999;
+  transition: width .1s linear;
+}
+
+/* ─────────────────────────────────────────────
+   IMPROVED SCROLL CUE IN HERO
+───────────────────────────────────────────── */
+.hero-scroll {
+  position: absolute; bottom: 32px; right: auto; left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: 0;
+  animation: hIn .6s 1.4s var(--out) forwards;
+}
+.scroll-mouse {
+  width: 24px; height: 38px;
+  border: 1.5px solid rgba(253,250,246,.3);
+  border-radius: 12px;
+  display: flex; justify-content: center; padding-top: 6px;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; border-radius: 2px;
+  background: rgba(253,250,246,.6);
+  animation: scrollWheel 2s ease-in-out 2s infinite;
+}
+@keyframes scrollWheel {
+  0%   { transform: translateY(0); opacity: 1 }
+  60%  { transform: translateY(8px); opacity: 0 }
+  61%  { transform: translateY(0); opacity: 0 }
+  100% { transform: translateY(0); opacity: 1 }
+}
+.scroll-txt {
+  font-family: var(--fm); font-size: .48rem;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: rgba(253,250,246,.3);
+}
+/* Remove old scroll-track */
+.scroll-track { display: none }
+
+/* ─────────────────────────────────────────────
+   TICKER
+───────────────────────────────────────────── */
+.ticker {
+  background: var(--i2);
+  overflow: hidden; padding: 15px 0;
+  border-top: 1px solid rgba(253,250,246,.05);
+}
+.ticker-track {
+  display: inline-flex;
+  animation: tickRun 36s linear infinite;
+  will-change: transform;
+}
+.ticker-track:hover { animation-play-state: paused }
+.tick-item {
+  font-family: var(--fm); font-size: .52rem;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: rgba(253,250,246,.28);
+  padding: 0 40px;
+  display: inline-flex; align-items: center; gap: 40px; flex-shrink: 0;
+}
+.tick-item::after { content: '◆'; color: rgba(253,250,246,.1); font-size: .35rem }
+@keyframes tickRun { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ─────────────────────────────────────────────
+   TRUST STRIP
+───────────────────────────────────────────── */
+.trust-strip {
+  background: #fff;
+  border-bottom: 1px solid var(--ln);
+}
+.trust-inner {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 var(--sp9);
+}
+.trust-cell {
+  display: flex; align-items: center; gap: var(--sp2);
+  padding: var(--sp3) var(--sp3);
+  border-right: 1px solid var(--ln);
+  transition: background .22s;
+  position: relative;
+}
+.trust-cell:first-child { padding-left: 0 }
+.trust-cell:last-child  { border-right: none }
+.trust-cell:hover { background: var(--abg) }
+/* Animated underline on hover */
+.trust-cell::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 100%;
+  height: 2px; background: var(--a0);
+  transition: right .4s var(--out);
+}
+.trust-cell:hover::after { right: 0 }
+
+.trust-ico {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: var(--r2);
+  background: var(--abg); border: 1px solid var(--abd);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .22s;
+}
+.trust-cell:hover .trust-ico { background: rgba(139,107,69,.14) }
+.trust-ico svg {
+  width: 18px; height: 18px;
+  stroke: var(--a0); fill: none;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+}
+.trust-label { font-size: .84rem; font-weight: 700; color: var(--i0) }
+.trust-sub   { font-size: .72rem; font-weight: 300; color: var(--t2); margin-top: 2px }
+
+/* ─────────────────────────────────────────────
+   SECTION WRAPPER
+───────────────────────────────────────────── */
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--sp9);
+}
+.section-pad { padding: var(--sp16) 0 }
+
+/* Section header row */
+.sh-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp7);
+}
+.sh-title {
+  font-family: var(--ff);
+  font-size: clamp(2.6rem, 4vw, 5rem);
+  font-weight: 300; line-height: 1.04;
+  color: var(--i0); margin-top: var(--sp1);
+}
+.sh-title em { font-style: italic; color: var(--a0) }
+
+/* ─────────────────────────────────────────────
+   PRODUCT TABS
+───────────────────────────────────────────── */
+.tab-bar {
+  display: flex; gap: 3px;
+  background: rgba(13,11,8,.05);
+  border-radius: var(--r3); padding: 4px;
+}
+.tab-btn {
+  padding: 9px 26px; border-radius: var(--r2);
+  font-size: .61rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--t2);
+  transition: all .3s var(--out); white-space: nowrap;
+}
+.tab-btn.active { background: #fff; color: var(--i0); box-shadow: var(--e1) }
+.tab-btn:hover:not(.active) { color: var(--i0) }
+
+.tab-panel { display: none }
+.tab-panel.active { display: block }
+
+/* ─────────────────────────────────────────────
+   PRODUCT CARDS
+───────────────────────────────────────────── */
+/* 3-column, strict */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: var(--sp3);
+}
+
+/* 5-item: flexbox centering last row */
+.pgrid5 {
+  display: flex; flex-wrap: wrap; gap: var(--sp3);
+  justify-content: center;
+}
+.pgrid5 > * {
+  flex: 0 0 calc(33.333% - 14px);
+}
+
+.pcard {
+  background: #fff;
+  border-radius: var(--r4);
+  overflow: hidden;
+  border: 1px solid var(--ln);
+  box-shadow: var(--e1);
+  transition:
+    box-shadow .44s var(--out),
+    transform .44s var(--out),
+    border-color .44s var(--out);
+  display: flex; flex-direction: column;
+}
+.pcard:hover {
+  box-shadow: var(--e4);
+  transform: translateY(-8px);
+  border-color: var(--abd);
+}
+
+/* Image */
+.pcard-fig {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--s1);
+  flex-shrink: 0;
+}
+.pcard-fig img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  transition: transform .8s var(--out);
+  font-size: 0; color: transparent;
+}
+.pcard:hover .pcard-fig img { transform: scale(1.05) }
+
+/* Badge */
+.pcard-badge {
+  position: absolute; top: 14px; left: 14px;
+  padding: 4px 12px; border-radius: var(--r0);
+  font-family: var(--fm); font-size: .47rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  pointer-events: none; z-index: 2;
+}
+.b-ink  { background: var(--i0); color: rgba(253,250,246,.9) }
+.b-warm { background: var(--a0); color: #fff }
+.b-sale { background: var(--err); color: #fff }
+.b-new  { background: rgba(253,250,246,.92); color: var(--a0); border: 1px solid var(--abd) }
+
+/* Quick-add overlay */
+.pcard-overlay {
+  position: absolute; inset: 0;
+  background: rgba(8,6,4,.28);
+  backdrop-filter: blur(3px);
+  display: flex; align-items: flex-end;
+  padding: var(--sp3);
+  opacity: 0; pointer-events: none;
+  transition: opacity .32s;
+  z-index: 3;
+}
+.pcard:hover .pcard-overlay { opacity: 1; pointer-events: all }
+.pcard-qadd {
+  width: 100%;
+  padding: 14px;
+  background: var(--a0); color: #fff;
+  border-radius: var(--r1);
+  font-family: var(--fb); font-size: .61rem;
+  font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  transform: translateY(10px);
+  transition: background .22s, transform .36s var(--out);
+}
+.pcard:hover .pcard-qadd { transform: translateY(0) }
+.pcard-qadd:hover { background: var(--a1) }
+
+/* Body */
+.pcard-body {
+  padding: var(--sp3) var(--sp3) var(--sp3);
+  display: flex; flex-direction: column; flex: 1;
+}
+.pcard-cat {
+  font-family: var(--fm); font-size: .48rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--a0); margin-bottom: 7px;
+}
+.pcard-name {
+  font-family: var(--ff); font-size: 1.28rem;
+  font-weight: 400; color: var(--i0);
+  line-height: 1.28; margin-bottom: 8px;
+}
+.pcard-desc {
+  font-size: .82rem; font-weight: 300;
+  color: var(--t2); line-height: 1.74;
+  flex: 1; margin-bottom: var(--sp2);
+}
+.pcard-foot {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: var(--sp1);
+  padding-top: var(--sp2);
+  border-top: 1px solid var(--ln2);
+  margin-top: auto;
+}
+.price-old {
+  font-size: .68rem; font-weight: 300;
+  color: var(--t3); text-decoration: line-through; margin-right: 5px;
+}
+.price-now {
+  font-family: var(--ff); font-size: 1.22rem;
+  font-weight: 400; color: var(--a0);
+}
+.pcard-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 9px 16px; background: var(--i0);
+  color: var(--s0); border-radius: var(--r1);
+  font-size: .57rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  transition: background .22s, transform .22s;
+  flex-shrink: 0; white-space: nowrap;
+}
+.pcard-btn:hover { background: var(--a0); transform: translateY(-1px) }
+
+/* ─────────────────────────────────────────────
+   STATS BAND
+───────────────────────────────────────────── */
+.stats-band {
+  background: var(--i2); position: relative; overflow: hidden;
+  padding: var(--sp12) var(--sp9);
+}
+.stats-band::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
+  background-size: 300px;
+}
+.stats-band::after {
+  content: '';
+  position: absolute; bottom: -120px; right: -80px; pointer-events: none;
+  width: 640px; height: 640px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,107,69,.08), transparent 65%);
+}
+.stats-inner {
+  max-width: 1160px; margin: 0 auto; position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border: 1px solid rgba(253,250,246,.06);
+  border-radius: var(--r3); overflow: hidden;
+}
+.stat-cell {
+  padding: var(--sp5) var(--sp5);
+  border-right: 1px solid rgba(253,250,246,.06);
+  transition: background .28s;
+  position: relative;
+}
+.stat-cell:last-child { border-right: none }
+.stat-cell:hover { background: rgba(253,250,246,.03) }
+/* Top accent line on hover */
+.stat-cell::before {
+  content: '';
+  position: absolute; top: 0; left: var(--sp5); right: 100%;
+  height: 2px; background: var(--ad0);
+  transition: right .5s var(--out);
+}
+.stat-cell:hover::before { right: var(--sp5) }
+.stat-n {
+  font-family: var(--ff); font-size: 2.8rem; font-weight: 300;
+  color: var(--ad0); line-height: 1; display: block; margin-bottom: 8px;
+}
+.stat-t {
+  font-size: .74rem; font-weight: 700;
+  color: rgba(253,250,246,.65); letter-spacing: .02em; margin-bottom: 6px;
+}
+.stat-d {
+  font-size: .78rem; font-weight: 300;
+  color: rgba(253,250,246,.3); line-height: 1.76;
+}
+
+/* ─────────────────────────────────────────────
+   TECHNOLOGY — EDITORIAL SPLITS
+───────────────────────────────────────────── */
+#usp { overflow: hidden }
+
+.tech-split {
+  display: grid;
+  grid-template-columns: 58fr 42fr;
+  min-height: 560px;
+}
+/* Second block: reversed */
+.tech-split-r {
+  display: grid;
+  grid-template-columns: 42fr 58fr;
+  min-height: 560px;
+}
+
+/* Image panel */
+.tech-img {
+  position: relative; overflow: hidden;
+}
+.tech-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  transition: transform .9s var(--out);
+  font-size: 0; color: transparent;
+}
+.tech-split:hover .tech-img img,
+.tech-split-r:hover .tech-img img { transform: scale(1.03) }
+
+.tech-img-dark  { background: var(--i2) }
+.tech-img-dark img { filter: drop-shadow(0 24px 64px rgba(8,6,4,.5)) }
+.tech-img-light { background: var(--s1) }
+
+/* Big decorative number */
+.tech-deco-num {
+  position: absolute; bottom: -8%; right: -4%;
+  font-family: var(--ff); font-style: italic;
+  font-size: clamp(10rem, 14vw, 20rem);
+  font-weight: 300; line-height: .85;
+  pointer-events: none; user-select: none;
+  z-index: 0;
+}
+.tech-img-dark .tech-deco-num  { color: rgba(253,250,246,.025) }
+.tech-img-light .tech-deco-num { color: rgba(13,11,8,.028) }
+
+/* Copy panel */
+.tech-copy {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 56px 5% 56px 6%;
+  position: relative; z-index: 1;
+  overflow: visible;
+}
+.tech-dark  { background: var(--i2) }
+.tech-light { background: var(--s0) }
+
+.tech-ov {
+  font-family: var(--fm); font-size: .62rem;
+  letter-spacing: .24em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-bottom: var(--sp3);
+  opacity: 1;
+}
+.tech-ov::before { content: ''; width: 14px; height: 1px; background: currentColor }
+.tech-dark  .tech-ov { color: var(--ad0) }
+.tech-light .tech-ov { color: var(--a0) }
+
+.tech-h {
+  font-family: var(--ff);
+  font-size: clamp(2.2rem, 2.8vw, 3.6rem);
+  font-weight: 300; line-height: 1.05;
+  margin-bottom: var(--sp2);
+}
+.tech-dark  .tech-h { color: rgba(253,250,246,.92) }
+.tech-light .tech-h { color: var(--i0) }
+.tech-h em { font-style: italic }
+.tech-dark  .tech-h em { color: var(--ad0) }
+.tech-light .tech-h em { color: var(--a0) }
+
+.tech-p {
+  font-size: .9rem; font-weight: 300; line-height: 1.88;
+  max-width: 100%; margin-bottom: var(--sp4);
+}
+.tech-dark  .tech-p { color: rgba(253,250,246,.36) }
+.tech-light .tech-p { color: var(--t1) }
+
+/* Fact rows */
+.tech-facts { margin-bottom: var(--sp5) }
+.tech-fact {
+  display: grid; grid-template-columns: auto 1fr; gap: 14px;
+  align-items: baseline; padding: 11px 0; border-bottom: 1px solid;
+}
+.tech-fact:first-child { border-top: 1px solid }
+.tech-dark  .tech-fact { border-color: rgba(253,250,246,.07) }
+.tech-light .tech-fact { border-color: var(--ln) }
+
+.tech-fn {
+  font-family: var(--ff); font-size: 1.5rem;
+  font-weight: 300; line-height: 1;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+.tech-dark  .tech-fn { color: var(--ad0) }
+.tech-light .tech-fn { color: var(--a0) }
+
+.tech-ft { font-size: .82rem; line-height: 1.6 }
+.tech-dark  .tech-ft { color: rgba(253,250,246,.4) }
+.tech-light .tech-ft { color: var(--t1) }
+
+.tech-tagline {
+  font-family: var(--ff);
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: var(--sp3);
+  padding: var(--sp2) 0;
+  border-left: 2px solid currentColor;
+  padding-left: var(--sp2);
+  opacity: .85;
+}
+.tech-dark  .tech-tagline { color: var(--ad0) }
+.tech-light .tech-tagline { color: var(--a0) }
+
+.tech-cta {
+  display: inline-flex; align-items: center; gap: var(--sp1);
+  font-size: .62rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase;
+  padding-bottom: 3px; border-bottom: 1px solid;
+  transition: gap .28s, letter-spacing .28s;
+}
+.tech-dark  .tech-cta { color: var(--ad0); border-color: rgba(196,164,126,.28) }
+.tech-light .tech-cta { color: var(--a0);  border-color: rgba(139,107,69,.28) }
+.tech-cta:hover { gap: 20px }
+
+/* ─────────────────────────────────────────────
+   REVIEWS
+───────────────────────────────────────────── */
+.reviews-wrap {
+  background: var(--s1);
+  padding: var(--sp16) var(--sp9);
+}
+.reviews-inner { max-width: 1280px; margin: 0 auto }
+
+.rating-row {
+  display: flex; align-items: flex-start; gap: var(--sp9); flex-wrap: wrap;
+  padding-bottom: var(--sp7);
+  margin-bottom: var(--sp7);
+  border-bottom: 1px solid var(--ln);
+}
+.rating-big {
+  font-family: var(--ff); font-size: 6rem; font-weight: 300;
+  color: var(--i0); line-height: 1;
+}
+.rating-stars { color: #C08830; font-size: 1.1rem; letter-spacing: 2px; margin-top: 6px }
+.rating-cnt { font-size: .63rem; color: var(--t3); margin-top: 5px }
+
+.rbars { flex: 1; min-width: 180px; max-width: 240px }
+.rbar { display: flex; align-items: center; gap: var(--sp1); margin-bottom: 7px }
+.rbar-l { font-family: var(--fm); font-size: .52rem; color: var(--t3); min-width: 22px; text-align: right }
+.rbar-t { flex: 1; height: 3px; background: var(--s2); border-radius: 99px; overflow: hidden }
+.rbar-f { height: 100%; background: #C08830; border-radius: 99px; width: 0; transition: width 1.6s var(--out) }
+.rbar-p { font-family: var(--fm); font-size: .52rem; color: var(--t3); min-width: 26px }
+
+.rtags { display: flex; gap: var(--sp1); flex-wrap: wrap; align-self: center }
+.rtag {
+  padding: 8px 14px; border-radius: var(--r1);
+  background: #fff; border: 1px solid var(--ln);
+  font-size: .68rem; color: var(--t2);
+  display: flex; align-items: center; gap: 6px;
+  box-shadow: var(--e1); transition: border-color .2s;
+}
+.rtag strong { color: var(--i0); font-weight: 700 }
+.rtag:hover { border-color: var(--abd) }
+
+/* Review grid */
+.rv-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp3);
+}
+.rcard {
+  background: #fff; border: 1px solid var(--ln);
+  border-radius: var(--r4); padding: var(--sp4) var(--sp4);
+  box-shadow: var(--e1); transition: all .44s var(--out);
+  display: flex; flex-direction: column;
+}
+.rcard:hover {
+  box-shadow: var(--e4);
+  transform: translateY(-6px);
+  border-color: var(--abd);
+}
+.rcard-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--sp2) }
+.rcard-stars { color: #C08830; font-size: .88rem; letter-spacing: 1.5px }
+.rcard-prod {
+  font-family: var(--fm); font-size: .5rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--a0); text-align: right; max-width: 110px; line-height: 1.5;
+}
+.rcard-q {
+  font-family: var(--ff); font-style: italic;
+  font-size: 1.15rem; font-weight: 300;
+  color: var(--i1); line-height: 1.72;
+  flex: 1; margin-bottom: var(--sp3);
+}
+.rcard-au {
+  display: flex; align-items: center; gap: var(--sp2);
+  padding-top: var(--sp2); border-top: 1px solid var(--ln2);
+}
+.rcard-av {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--s1); border: 1px solid var(--ln);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff); font-size: .9rem; font-weight: 300; color: var(--a0);
+  flex-shrink: 0;
+}
+.rcard-name { font-size: .79rem; font-weight: 700; color: var(--i0) }
+.rcard-loc  { font-size: .62rem; color: var(--t3) }
+.rcard-v    { font-family: var(--fm); font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ok); margin-top: 2px }
+
+/* ─────────────────────────────────────────────
+   FAQ
+───────────────────────────────────────────── */
+.faq-wrap  { padding: var(--sp16) var(--sp9); background: var(--s0) }
+.faq-inner { max-width: 760px; margin: 0 auto }
+.faq-head  { text-align: center; margin-bottom: var(--sp8) }
+.faq-title {
+  font-family: var(--ff);
+  font-size: clamp(2.2rem, 3.5vw, 4rem);
+  font-weight: 300; color: var(--i0);
+  line-height: 1.06; margin-top: var(--sp1);
+}
+.faq-title em { font-style: italic; color: var(--a0) }
+.faq-sub { font-size: .85rem; font-weight: 300; color: var(--t2) }
+
+.faq-item { border-bottom: 1px solid var(--ln) }
+.faq-q {
+  padding: var(--sp3) 0; display: flex;
+  align-items: center; justify-content: space-between;
+  gap: var(--sp3);
+}
+.faq-qt {
+  font-family: var(--ff); font-size: 1.2rem;
+  font-weight: 300; color: var(--i0); line-height: 1.32;
+}
+.faq-ic {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  border: 1px solid var(--ln);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t3); font-size: 1.1rem;
+  transition: all .3s var(--out);
+}
+.faq-item.open .faq-ic { color: var(--a0); border-color: var(--abd); transform: rotate(45deg) }
+.faq-ans { max-height: 0; overflow: hidden; transition: max-height .52s var(--out) }
+.faq-ans-in {
+  padding: 0 0 var(--sp3);
+  font-size: .85rem; font-weight: 300; color: var(--t1); line-height: 1.9;
+}
+.faq-foot {
+  text-align: center; margin-top: var(--sp5);
+  font-size: .83rem; color: var(--t2);
+}
+.faq-foot a { color: var(--a0); font-weight: 600; border-bottom: 1px solid var(--abd); transition: border-color .2s }
+.faq-foot a:hover { border-color: var(--a0) }
+
+/* ─────────────────────────────────────────────
+   NEWSLETTER
+───────────────────────────────────────────── */
+.nl-wrap {
+  background: var(--i2);
+  padding: var(--sp16) var(--sp9);
+  position: relative; overflow: hidden;
+}
+.nl-wrap::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+.nl-wrap::after {
+  content: '';
+  position: absolute; bottom: -120px; right: -80px; pointer-events: none;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,107,69,.1), transparent 65%);
+}
+.nl-inner {
+  max-width: 580px; margin: 0 auto;
+  text-align: center; position: relative; z-index: 1;
+}
+.nl-ov {
+  font-family: var(--fm); font-size: .52rem;
+  letter-spacing: .34em; text-transform: uppercase;
+  color: var(--ad0); display: inline-flex; align-items: center;
+  justify-content: center; gap: 10px; margin-bottom: var(--sp2);
+}
+.nl-ov::before { content: ''; width: 16px; height: 1px; background: currentColor }
+.nl-h {
+  font-family: var(--ff);
+  font-size: clamp(2.6rem, 4.2vw, 4.6rem);
+  font-weight: 300; color: rgba(253,250,246,.92);
+  line-height: 1.06; margin-bottom: var(--sp2);
+}
+.nl-h em { font-style: italic; color: var(--ad0) }
+.nl-p {
+  font-size: .94rem; font-weight: 300;
+  color: rgba(253,250,246,.32); line-height: 1.9; margin-bottom: var(--sp5);
+}
+.nl-p strong { color: rgba(253,250,246,.6) }
+.nl-form { display: flex; gap: var(--sp1); max-width: 460px; margin: 0 auto }
+.nl-inp {
+  flex: 1; padding: 15px 18px;
+  background: rgba(253,250,246,.07);
+  border: 1px solid rgba(253,250,246,.12);
+  border-radius: var(--r0);
+  font-family: var(--fb); font-size: .85rem;
+  color: rgba(253,250,246,.9); outline: none;
+  transition: border-color .22s, box-shadow .22s;
+}
+.nl-inp::placeholder { color: rgba(253,250,246,.2) }
+.nl-inp:focus { border-color: var(--a0); box-shadow: 0 0 0 3px rgba(139,107,69,.12) }
+.nl-sub {
+  padding: 15px 28px; background: var(--a0); color: #fff;
+  border-radius: var(--r0);
+  font-family: var(--fb); font-size: .65rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  transition: all .3s var(--out); white-space: nowrap;
+}
+.nl-sub:hover { background: var(--a1); box-shadow: 0 8px 28px rgba(139,107,69,.4); transform: translateY(-1px) }
+.nl-note { font-size: .6rem; color: rgba(253,250,246,.17); margin-top: var(--sp2) }
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer { background: var(--i2) }
+.ft-main {
+  display: grid; grid-template-columns: 1.9fr 1fr 1fr 1fr;
+  gap: var(--sp7);
+  padding: var(--sp12) var(--sp9) var(--sp9);
+  border-top: 1px solid rgba(253,250,246,.05);
+  max-width: 1400px; margin: 0 auto;
+}
+.ft-logo-img {
+  height: 28px; filter: brightness(0) invert(1);
+  margin-bottom: var(--sp2); display: block; font-size: 0; color: transparent;
+}
+.ft-wordmark {
+  font-family: var(--ff); font-size: 1.4rem; font-weight: 300;
+  color: rgba(253,250,246,.88); margin-bottom: var(--sp2); display: block;
+}
+.ft-tag {
+  font-size: .82rem; font-weight: 300;
+  color: rgba(253,250,246,.22); line-height: 1.82;
+  max-width: 220px; margin-bottom: var(--sp3);
+}
+.ft-socs { display: flex; gap: 6px }
+.ft-soc {
+  width: 34px; height: 34px; border-radius: var(--r0);
+  border: 1px solid rgba(253,250,246,.1);
+  color: rgba(253,250,246,.25);
+  font-size: .6rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .22s;
+}
+.ft-soc:hover { border-color: var(--ad0); color: var(--ad0); transform: translateY(-2px) }
+.ft-col h5 {
+  font-size: .58rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(253,250,246,.85); margin-bottom: var(--sp2);
+}
+.ft-links { display: flex; flex-direction: column; gap: 10px }
+.ft-links a {
+  font-size: .84rem; font-weight: 300;
+  color: rgba(253,250,246,.24); transition: color .2s;
+}
+.ft-links a:hover { color: var(--ad0) }
+.ft-bot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--sp3); flex-wrap: wrap;
+  padding: var(--sp3) var(--sp9) var(--sp4);
+  border-top: 1px solid rgba(253,250,246,.05);
+  max-width: 1400px; margin: 0 auto;
+}
+.ft-copy { font-size: .62rem; color: rgba(253,250,246,.17); line-height: 1.6 }
+.ft-certs { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px }
+.ft-cert {
+  padding: 3px 9px; border-radius: var(--r1);
+  font-family: var(--fm); font-size: .47rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(253,250,246,.17); border: 1px solid rgba(253,250,246,.07);
+}
+.ft-pays { display: flex; gap: 5px; flex-wrap: wrap }
+.ft-pay {
+  padding: 6px 10px; border-radius: var(--r1);
+  background: rgba(253,250,246,.04); border: 1px solid rgba(253,250,246,.07);
+  font-size: .56rem; font-weight: 700;
+  color: rgba(253,250,246,.22); letter-spacing: .04em; transition: border-color .2s;
+}
+.ft-pay:hover { border-color: rgba(253,250,246,.17) }
+
+/* ─────────────────────────────────────────────
+   CART DRAWER
+───────────────────────────────────────────── */
+.cart-overlay {
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(8,6,4,.5); opacity: 0; pointer-events: none;
+  transition: opacity .38s; backdrop-filter: blur(4px);
+}
+.cart-overlay.open { opacity: 1; pointer-events: all }
+
+.cart-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 460px; max-width: 95vw; z-index: 1200;
+  background: var(--s0); transform: translateX(110%);
+  transition: transform .52s var(--expo);
+  display: flex; flex-direction: column;
+  border-left: 1px solid var(--ln);
+  box-shadow: -8px 0 60px rgba(8,6,4,.14);
+}
+.cart-drawer.open { transform: translateX(0) }
+
+.c-head {
+  padding: var(--sp3) var(--sp4); border-bottom: 1px solid var(--ln);
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff;
+}
+.c-head-title { font-family: var(--ff); font-size: 1.6rem; font-weight: 300; color: var(--i0) }
+.c-close {
+  width: 34px; height: 34px; border-radius: var(--r1);
+  border: 1px solid var(--ln);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t3); font-size: .88rem; transition: all .2s;
+}
+.c-close:hover { border-color: var(--err); color: var(--err) }
+
+.c-prog { padding: 11px var(--sp4); border-bottom: 1px solid var(--ln2); background: #fff }
+.c-prog-txt { font-size: .64rem; color: var(--t2); margin-bottom: 6px }
+.c-prog-t { height: 2px; background: var(--s1); border-radius: 99px; overflow: hidden }
+.c-prog-f { height: 100%; background: var(--ok); border-radius: 99px; width: 0; transition: width .6s var(--out) }
+
+.c-body { flex: 1; overflow-y: auto; padding: 14px var(--sp4) }
+.c-empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; height: 100%; gap: 12px;
+}
+.c-empty-ico {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--s1); border: 1px solid var(--ln);
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+}
+.c-empty p { font-size: .83rem; color: var(--t2) }
+
+.c-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--ln2) }
+.c-item:last-child { border-bottom: none }
+.c-item-img {
+  width: 68px; height: 68px; border-radius: var(--r2);
+  background: var(--s1); flex-shrink: 0;
+  overflow: hidden; border: 1px solid var(--ln);
+}
+.c-item-img img { width: 100%; height: 100%; object-fit: cover; font-size: 0; color: transparent }
+.c-item-name { font-size: .83rem; font-weight: 600; color: var(--i0); margin-bottom: 3px }
+.c-item-price { font-family: var(--ff); font-size: 1rem; font-weight: 300; color: var(--a0); margin-bottom: 7px }
+.c-qty { display: flex; align-items: center; gap: var(--sp1) }
+.c-qb {
+  width: 26px; height: 26px; border-radius: var(--r1);
+  border: 1px solid var(--ln);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .88rem; color: var(--i1); transition: all .2s;
+}
+.c-qb:hover { border-color: var(--a0); color: var(--a0) }
+.c-qn { font-size: .83rem; font-weight: 700; min-width: 16px; text-align: center }
+.c-rm {
+  margin-left: auto; font-family: var(--fm); font-size: .5rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--t3); transition: color .2s;
+}
+.c-rm:hover { color: var(--err) }
+
+.c-up {
+  margin: 6px var(--sp4); padding: 13px 15px;
+  background: var(--abg); border: 1px solid var(--abd); border-radius: var(--r2);
+}
+.c-up-l { font-family: var(--fm); font-size: .5rem; letter-spacing: .15em; text-transform: uppercase; color: var(--a0); margin-bottom: 9px }
+.c-up-r { display: flex; gap: 10px; align-items: center }
+.c-up-img {
+  width: 42px; height: 42px; border-radius: var(--r1);
+  background: #fff; flex-shrink: 0; overflow: hidden; border: 1px solid var(--ln);
+}
+.c-up-img img { width: 100%; height: 100%; object-fit: cover; font-size: 0; color: transparent }
+.c-up-name { font-size: .77rem; color: var(--i0); flex: 1; font-weight: 600 }
+.c-up-price { font-family: var(--ff); font-size: .88rem; font-weight: 300; color: var(--a0) }
+.c-up-add {
+  padding: 7px 12px; border-radius: var(--r1);
+  background: var(--i0); color: var(--s0);
+  font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  transition: background .2s; white-space: nowrap;
+}
+.c-up-add:hover { background: var(--a0) }
+
+.c-foot { padding: var(--sp3) var(--sp4) var(--sp4); border-top: 1px solid var(--ln); background: #fff }
+.c-total { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px }
+.c-total-l { font-family: var(--fm); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--t2) }
+.c-total-v { font-family: var(--ff); font-size: 1.9rem; font-weight: 300; color: var(--i0) }
+.c-checkout {
+  display: block; width: 100%; padding: 16px; text-align: center;
+  background: var(--a0); color: #fff; border-radius: var(--r1);
+  font-family: var(--fb); font-size: .68rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  transition: all .3s var(--out);
+}
+.c-checkout:hover { background: var(--a1); box-shadow: 0 8px 28px rgba(139,107,69,.4); transform: translateY(-1px) }
+.c-trust { display: flex; justify-content: center; gap: var(--sp3); margin-top: 11px }
+.c-trust span { font-size: .6rem; color: var(--t3) }
+
+/* ─────────────────────────────────────────────
+   LIVE TOAST
+───────────────────────────────────────────── */
+.toast {
+  position: fixed; bottom: var(--sp4); left: var(--sp3); z-index: 1050;
+  background: #fff; border: 1px solid var(--ln); border-radius: var(--r4);
+  padding: 13px 16px; display: flex; align-items: center; gap: 12px;
+  box-shadow: var(--e3); min-width: 220px; max-width: 290px;
+  transform: translateY(20px); opacity: 0; pointer-events: none;
+  transition: all .44s var(--out);
+}
+.toast.show { transform: translateY(0); opacity: 1; pointer-events: all }
+.toast-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  background: var(--ok);
+  box-shadow: 0 0 0 3px rgba(42,106,69,.18);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100% { box-shadow: 0 0 0 3px rgba(42,106,69,.18) }
+  50%     { box-shadow: 0 0 0 7px rgba(42,106,69,.06) }
+}
+.toast-text { font-size: .73rem; line-height: 1.5 }
+.toast-text strong { color: var(--i0); font-weight: 700; display: block }
+.toast-text span   { color: var(--t2) }
+
+/* ─────────────────────────────────────────────
+   STICKY BAR
+───────────────────────────────────────────── */
+.sbar {
+  position: fixed; bottom: -80px; left: 0; right: 0; z-index: 700;
+  background: var(--i2); border-top: 1px solid rgba(253,250,246,.07);
+  padding: 14px var(--sp9);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp2);
+  transition: bottom .44s var(--out);
+  box-shadow: 0 -4px 24px rgba(8,6,4,.2);
+}
+.sbar.show { bottom: 0 }
+.sbar-txt { font-size: .75rem; color: rgba(253,250,246,.38) }
+.sbar-txt strong { color: rgba(253,250,246,.75); font-weight: 700 }
+
+/* ─────────────────────────────────────────────
+   FLOAT ACTIONS
+───────────────────────────────────────────── */
+.float-wrap {
+  position: fixed; right: var(--sp3); bottom: 96px; z-index: 700;
+  display: flex; flex-direction: column; gap: var(--sp1);
+  opacity: 0; transform: translateY(14px); pointer-events: none;
+  transition: all .44s var(--out);
+}
+.float-wrap.show { opacity: 1; transform: translateY(0); pointer-events: all }
+.f-btn {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem; box-shadow: var(--e2);
+  transition: all .22s; border: none;
+}
+.f-btn:hover { transform: scale(1.14); box-shadow: var(--e3) }
+.f-phone { background: var(--a0); color: #fff }
+.f-chat  { background: var(--i0); color: #fff }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — precision breakpoints
+───────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  :root {
+    --sp9: 48px; /* reduce horizontal padding on smaller screens */
+  }
+  .pgrid5 > * { flex: 0 0 calc(33.333% - 14px) }
+  .ft-main { grid-template-columns: 1fr 1fr; gap: 40px }
+}
+
+@media (max-width: 1024px) {
+  .nav-center { display: none }
+  .nav-ham    { display: flex }
+  .nav-cta    { display: none !important }
+  .stats-inner { grid-template-columns: repeat(2,1fr) }
+  .stat-cell:nth-child(2) { border-right: none }
+  .stat-cell:nth-child(3) { border-top: 1px solid rgba(253,250,246,.06) }
+  .pgrid5 > * { flex: 0 0 calc(50% - 12px) }
+}
+
+@media (max-width: 900px) {
+  .tech-split, .tech-split-r { grid-template-columns: 1fr }
+  .tech-split .tech-img       { order: 1; min-height: 420px }
+  .tech-split .tech-copy      { order: 2 }
+  .tech-split-r .tech-copy    { order: 2 }
+  .tech-split-r .tech-img     { order: 1; min-height: 420px }
+  .tech-img img { padding: 0 }
+  .tech-copy { padding: 48px 6vw }
+  .rv-grid { grid-template-columns: repeat(2,1fr) }
+}
+
+@media (max-width: 768px) {
+  :root { --sp9: 24px; --sp16: 96px }
+
+  /* Trust */
+  .trust-inner { grid-template-columns: 1fr }
+  .trust-cell  { border-right: none; border-bottom: 1px solid var(--ln); padding: 16px 0 }
+  .trust-cell:last-child { border-bottom: none }
+
+  /* Hero */
+  .hero-body { padding: 0 6vw 64px }
+  .hero-stats { flex-wrap: wrap; gap: 0 }
+  .hero-stat  { flex: 1; padding: 0 14px }
+  .hero-stat:first-child { padding-left: 0 }
+  .hero-stat-n { font-size: 1.3rem }
+  .hero-stat-l { font-size: .48rem }
+  /* hero-scroll stays visible on mobile — centred mouse icon */
+
+  /* Products */
+  .pgrid   { grid-template-columns: repeat(2,1fr); gap: 14px }
+  .pgrid5  { gap: 14px }
+  .pgrid5 > * { flex: 0 0 calc(50% - 7px) }
+
+  /* Stats */
+  .stats-inner { grid-template-columns: repeat(2,1fr) }
+  .stat-cell { border-right: none }
+  .stat-cell:nth-child(odd) { border-right: 1px solid rgba(253,250,246,.06) !important }
+
+  /* Reviews */
+  .rv-grid { grid-template-columns: 1fr }
+  .rating-row { flex-direction: column; gap: 24px }
+
+  /* Footer */
+  .ft-main { grid-template-columns: 1fr; padding: var(--sp9) var(--sp9) var(--sp7) }
+  .ft-bot  { padding: var(--sp2) var(--sp9) var(--sp3) }
+  .sbar    { padding: 12px var(--sp4); flex-direction: column; gap: 10px }
+}
+
+@media (max-width: 520px) {
+  :root { --sp16: 80px }
+  .pgrid { grid-template-columns: 1fr }
+  .pgrid5 > * { flex: 0 0 100% }
+  .hero-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); line-height: 1.08 }
+  .hero-btns { flex-direction: column }
+  .hero-btns .btn { width: 100%; justify-content: center }
+  .nl-form { flex-direction: column }
+  .stats-inner { grid-template-columns: 1fr }
+  .stat-cell { border-right: none !important; border-bottom: 1px solid rgba(253,250,246,.06) }
+  .stat-cell:last-child { border-bottom: none }
+  .rv-grid { grid-template-columns: 1fr }
+  .ft-main { grid-template-columns: 1fr }
+}
+/* ─────────────────────────────────────────────
+   CTA CLOSING SECTION
+───────────────────────────────────────────── */
+.cta-close {
+  background: var(--s0);
+  padding: var(--sp16) var(--sp9);
+  text-align: center;
+  border-top: 1px solid var(--ln);
+  border-bottom: 1px solid var(--ln);
+}
+.cta-close-inner { max-width: 700px; margin: 0 auto }
+.cta-tag {
+  font-family: var(--fm); font-size: .58rem;
+  letter-spacing: .32em; text-transform: uppercase;
+  color: var(--a0); margin-bottom: var(--sp2);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.cta-tag::before { content: ''; width: 18px; height: 1px; background: currentColor }
+.cta-close-h {
+  font-family: var(--ff);
+  font-size: clamp(2.8rem, 5vw, 5.8rem);
+  font-weight: 300; line-height: .98;
+  color: var(--i0); letter-spacing: -.02em;
+  margin-bottom: var(--sp4);
+}
+.cta-close-h em { font-style: italic; color: var(--a0) }
+.cta-close-p {
+  font-size: 1rem; font-weight: 300;
+  color: var(--t2); line-height: 1.8;
+  margin-bottom: var(--sp6);
+}
+.cta-close-btns {
+  display: flex; gap: var(--sp2);
+  justify-content: center; flex-wrap: wrap;
+  margin-bottom: var(--sp5);
+}
+.cta-close-trust {
+  display: flex; gap: var(--sp4); flex-wrap: wrap;
+  justify-content: center;
+}
+.cta-close-trust span {
+  font-size: .76rem; font-weight: 500;
+  color: var(--t2); letter-spacing: .01em;
+}
+
+/* ─────────────────────────────────────────────
+   AI CHATBOT SECTION
+───────────────────────────────────────────── */
+.ai-section {
+  background: var(--i2);
+  padding: var(--sp12) var(--sp9);
+  position: relative; overflow: hidden;
+}
+.ai-section::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+.ai-section::after {
+  content: '';
+  position: absolute; top: -120px; left: -80px; pointer-events: none;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,107,69,.07), transparent 65%);
+}
+.ai-inner {
+  max-width: 780px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.ai-header { text-align: center; margin-bottom: var(--sp5) }
+.ai-title {
+  font-family: var(--ff);
+  font-size: clamp(2.2rem, 3.2vw, 3.6rem);
+  font-weight: 300; color: rgba(253,250,246,.92);
+  line-height: 1.04; margin: var(--sp2) 0 var(--sp2);
+}
+.ai-subtitle {
+  font-size: .96rem; font-weight: 300;
+  color: rgba(253,250,246,.36); line-height: 1.88;
+  max-width: 560px; margin: 0 auto;
+}
+
+/* Quick pills */
+.ai-quick-label {
+  font-family: var(--fb); font-size: .64rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(253,250,246,.35); margin-bottom: 12px;
+  padding: var(--sp3) var(--sp3) 0;
+}
+.ai-quick-pills {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 0 var(--sp3) var(--sp3);
+  border-bottom: 1px solid rgba(253,250,246,.07);
+}
+.ai-pill {
+  padding: 8px 15px;
+  background: rgba(253,250,246,.05);
+  border: 1px solid rgba(253,250,246,.1);
+  border-radius: 99px;
+  font-family: var(--fb); font-size: .74rem;
+  color: rgba(253,250,246,.5);
+  transition: all .26s var(--out);
+  cursor: pointer;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.4;
+}
+.ai-pill:hover {
+  background: rgba(253,250,246,.12);
+  border-color: var(--a1);
+  color: rgba(253,250,246,.88);
+  transform: translateY(-1px);
+}
+
+/* Chat window */
+.ai-chat-wrap {
+  background: rgba(8,6,4,.4);
+  border: 1px solid rgba(253,250,246,.12);
+  border-radius: var(--r3);
+  overflow: hidden;
+}
+.ai-messages {
+  min-height: 120px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: var(--sp3) var(--sp4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp2);
+  scroll-behavior: smooth;
+}
+.ai-messages::-webkit-scrollbar { width: 3px }
+.ai-messages::-webkit-scrollbar-thumb { background: rgba(253,250,246,.1) }
+
+.ai-msg { display: flex; gap: 12px; align-items: flex-start }
+.ai-msg-bot { }
+.ai-msg-user { flex-direction: row-reverse }
+
+.ai-msg-avatar {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--a0);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; color: #fff;
+  font-weight: 700;
+}
+.ai-msg-user .ai-msg-avatar {
+  background: rgba(253,250,246,.12);
+  color: rgba(253,250,246,.6);
+  font-size: .65rem;
+}
+
+.ai-msg-bubble {
+  max-width: 82%;
+  padding: 11px 15px;
+  border-radius: var(--r2);
+  font-size: .88rem; line-height: 1.68;
+}
+.ai-msg-bot .ai-msg-bubble {
+  background: rgba(253,250,246,.08);
+  color: rgba(253,250,246,.78);
+  border-radius: 4px var(--r3) var(--r3) var(--r3);
+}
+.ai-msg-user .ai-msg-bubble {
+  background: var(--a0);
+  color: #fff;
+  border-radius: var(--r3) 4px var(--r3) var(--r3);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; align-items: center; gap: 5px;
+  padding: 14px 16px;
+}
+.ai-typing span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(253,250,246,.3);
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .2s }
+.ai-typing span:nth-child(3) { animation-delay: .4s }
+@keyframes typingBounce {
+  0%,60%,100% { transform: translateY(0) }
+  30%          { transform: translateY(-6px) }
+}
+
+/* Input row */
+.ai-input-row {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(253,250,246,.08);
+}
+.ai-input {
+  flex: 1;
+  padding: 18px 20px;
+  background: transparent;
+  border: none; outline: none;
+  font-family: var(--fb); font-size: .9rem;
+  color: rgba(253,250,246,.82);
+}
+.ai-input::placeholder { color: rgba(253,250,246,.22) }
+.ai-send {
+  padding: 0 20px;
+  background: transparent;
+  border-left: 1px solid rgba(253,250,246,.08);
+  color: rgba(253,250,246,.3);
+  transition: color .22s, background .22s;
+  cursor: pointer;
+}
+.ai-send:hover { color: var(--a1); background: rgba(253,250,246,.04) }
+.ai-send.loading { color: var(--a0); pointer-events: none }
+
+.ai-disclaimer {
+  padding: 10px 20px;
+  border-top: 1px solid rgba(253,250,246,.06);
+  font-size: .65rem; color: rgba(253,250,246,.2);
+  text-align: center;
+}
+.ai-disclaimer a { color: var(--a1) }
+
+@media (max-width: 768px) {
+  .ai-quick-pills { flex-wrap: wrap }
+  .ai-pill { white-space: normal; flex: 0 0 auto; max-width: calc(50% - 4px) }
+  .cta-close-trust { flex-direction: column; gap: var(--sp2) }
+}
+
+/* ─────────────────────────────────────────────
+   CHECKOUT MODAL
+───────────────────────────────────────────── */
+.co-overlay {
+  position: fixed; inset: 0; z-index: 1300;
+  background: rgba(8,6,4,.6);
+  opacity: 0; pointer-events: none;
+  transition: opacity .38s;
+  backdrop-filter: blur(6px);
+}
+.co-overlay.open { opacity: 1; pointer-events: all }
+
+.co-modal {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -48%);
+  z-index: 1400;
+  width: min(860px, 95vw);
+  max-height: 92vh;
+  background: #fff;
+  border-radius: var(--r4);
+  box-shadow: 0 32px 96px rgba(8,6,4,.22), 0 8px 24px rgba(8,6,4,.1);
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity .38s var(--out), transform .38s var(--out);
+}
+.co-modal.open {
+  opacity: 1; pointer-events: all;
+  transform: translate(-50%, -50%);
+}
+
+/* Steps header */
+.co-header {
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--ln);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.co-steps { display: flex; align-items: center; gap: 0 }
+.co-step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .7rem; font-weight: 600; letter-spacing: .06em;
+  color: var(--t3); transition: color .3s;
+}
+.co-step.active { color: var(--i0) }
+.co-step.done   { color: var(--ok) }
+.co-step-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--s2); color: var(--t2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .68rem; font-weight: 700; flex-shrink: 0;
+  transition: all .3s;
+}
+.co-step.active .co-step-num { background: var(--i0); color: #fff }
+.co-step.done   .co-step-num { background: var(--ok); color: #fff }
+.co-step-lbl { white-space: nowrap }
+.co-step-sep {
+  width: 40px; height: 1px; background: var(--s3); margin: 0 12px; flex-shrink: 0;
+}
+.co-close {
+  width: 36px; height: 36px; border-radius: var(--r1);
+  border: 1px solid var(--ln);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t3); cursor: pointer; transition: all .2s;
+  background: transparent;
+}
+.co-close:hover { border-color: var(--err); color: var(--err) }
+
+/* Body / panels */
+.co-body { flex: 1; overflow-y: auto; padding: 28px }
+.co-body::-webkit-scrollbar { width: 3px }
+.co-body::-webkit-scrollbar-thumb { background: var(--s3) }
+
+.co-panel { display: none }
+.co-panel.active { display: block }
+
+.co-section-title {
+  font-family: var(--fm); font-size: .6rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--t2); margin-bottom: 14px; font-weight: 400;
+}
+
+/* Form fields */
+.co-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px }
+.co-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px }
+.co-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px }
+.co-label { font-size: .7rem; font-weight: 600; color: var(--i0) }
+.co-req { color: var(--err) }
+.co-input {
+  padding: 11px 14px;
+  border: 1px solid var(--s3);
+  border-radius: var(--r1);
+  font-family: var(--fb); font-size: .84rem; color: var(--i0);
+  outline: none; transition: border-color .22s, box-shadow .22s;
+  background: var(--s0);
+}
+.co-input:focus { border-color: var(--a0); box-shadow: 0 0 0 3px rgba(139,107,69,.1); background: #fff }
+.co-input.error { border-color: var(--err); box-shadow: 0 0 0 3px rgba(170,43,43,.1) }
+.co-select {
+  padding: 11px 14px;
+  border: 1px solid var(--s3); border-radius: var(--r1);
+  font-family: var(--fb); font-size: .84rem; color: var(--i0);
+  outline: none; cursor: pointer;
+  background: var(--s0);
+  transition: border-color .22s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7A6C' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.co-select:focus { border-color: var(--a0) }
+
+/* Shipping options */
+.co-ship-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px }
+.co-ship-opt {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 16px; border: 1px solid var(--s3);
+  border-radius: var(--r2); cursor: pointer; transition: all .22s;
+}
+.co-ship-opt:hover { border-color: var(--a0); background: var(--abg) }
+.co-ship-opt input[type=radio] { accent-color: var(--a0); width: 16px; height: 16px; flex-shrink: 0 }
+.co-ship-opt:has(input:checked) { border-color: var(--a0); background: var(--abg) }
+.co-ship-opt-body { flex: 1 }
+.co-ship-name { font-size: .8rem; font-weight: 700; color: var(--i0) }
+.co-ship-desc { font-size: .7rem; font-weight: 300; color: var(--t2); margin-top: 2px }
+.co-ship-price { font-family: var(--ff); font-size: 1rem; font-weight: 400; color: var(--a0); white-space: nowrap }
+.co-ship-price.free { color: var(--ok) }
+
+/* Mini order summary */
+.co-mini-sum {
+  background: var(--s1); border-radius: var(--r2);
+  padding: 14px 16px; margin-bottom: 20px;
+  border: 1px solid var(--ln);
+}
+.co-mini-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0 }
+.co-mini-row:not(:last-child) { border-bottom: 1px solid var(--ln2) }
+.co-mini-l { font-size: .74rem; color: var(--t2) }
+.co-mini-v { font-size: .78rem; font-weight: 600; color: var(--i0) }
+.co-mini-v.total { font-family: var(--ff); font-size: 1.1rem; font-weight: 300; color: var(--a0) }
+
+/* Next / Back buttons */
+.co-next-btn {
+  width: 100%; padding: 15px; background: var(--i0); color: var(--s0);
+  border-radius: var(--r1); border: none;
+  font-family: var(--fb); font-size: .7rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: all .28s var(--out);
+}
+.co-next-btn:hover { background: var(--a0); box-shadow: 0 8px 24px rgba(139,107,69,.3); transform: translateY(-1px) }
+
+.co-panel-btns { display: flex; gap: 10px; margin-top: 20px }
+.co-back-btn {
+  padding: 14px 22px; background: transparent; color: var(--t2);
+  border: 1px solid var(--s3); border-radius: var(--r1);
+  font-family: var(--fb); font-size: .66rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+  display: flex; align-items: center; gap: 6px; transition: all .22s;
+}
+.co-back-btn:hover { border-color: var(--i0); color: var(--i0) }
+.co-confirm-btn {
+  flex: 1; padding: 15px; background: var(--a0); color: #fff;
+  border-radius: var(--r1); border: none;
+  font-family: var(--fb); font-size: .7rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: all .28s var(--out);
+}
+.co-confirm-btn:hover { background: var(--a1); box-shadow: 0 8px 24px rgba(139,107,69,.35); transform: translateY(-1px) }
+
+/* Payment method tabs */
+.co-pay-tabs {
+  display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.co-pay-tab {
+  padding: 10px 16px; border: 1px solid var(--s3); border-radius: var(--r2);
+  font-family: var(--fb); font-size: .68rem; font-weight: 600;
+  color: var(--t2); cursor: pointer; transition: all .22s;
+  display: flex; align-items: center; gap: 6px; background: var(--s0);
+}
+.co-pay-tab:hover { border-color: var(--a0); color: var(--i0) }
+.co-pay-tab.active { border-color: var(--i0); background: var(--i0); color: #fff }
+
+.co-method-panel { display: none }
+.co-method-panel.active { display: block }
+
+/* Info box */
+.co-info-box {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(139,107,69,.06); border: 1px solid var(--abd);
+  border-radius: var(--r2); padding: 13px 15px; margin-bottom: 16px;
+}
+.co-info-box svg { flex-shrink: 0; color: var(--a0); margin-top: 1px }
+.co-info-box p { font-size: .8rem; line-height: 1.7; color: var(--t1) }
+
+/* COD note */
+.co-cod-note {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--s1); border-radius: var(--r2); padding: 16px;
+}
+.co-cod-icon { font-size: 1.4rem; flex-shrink: 0 }
+.co-cod-title { font-size: .8rem; font-weight: 700; color: var(--i0); margin-bottom: 4px }
+.co-cod-desc  { font-size: .76rem; font-weight: 300; color: var(--t2); line-height: 1.7 }
+
+/* Bank transfer */
+.co-bank-card {
+  border: 1px solid var(--ln); border-radius: var(--r3);
+  overflow: hidden; margin-bottom: 16px;
+}
+.co-bank-header {
+  background: var(--s1); padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid var(--ln);
+}
+.co-bank-logo { font-size: 1.6rem }
+.co-bank-name { font-size: .88rem; font-weight: 700; color: var(--i0) }
+.co-bank-sub  { font-size: .68rem; color: var(--t2) }
+.co-bank-rows { padding: 6px 18px }
+.co-bank-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 0; border-bottom: 1px solid var(--ln2);
+}
+.co-bank-row:last-child { border-bottom: none }
+.co-bank-l { font-size: .7rem; color: var(--t2); min-width: 130px; flex-shrink: 0 }
+.co-bank-v { font-size: .82rem; font-weight: 600; color: var(--i0); flex: 1 }
+.co-bank-highlight { color: var(--a0); font-family: var(--fm); letter-spacing: .06em }
+.co-bank-amount { color: var(--a0); font-family: var(--ff); font-size: 1.1rem; font-weight: 300 }
+.co-copy-btn {
+  width: 28px; height: 28px; border-radius: var(--r1);
+  border: 1px solid var(--ln); background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t2); cursor: pointer; transition: all .2s; flex-shrink: 0;
+}
+.co-copy-btn:hover { border-color: var(--a0); color: var(--a0) }
+.co-copy-btn.copied { border-color: var(--ok); color: var(--ok) }
+.co-bank-note {
+  padding: 12px 18px;
+  background: rgba(42,106,69,.06);
+  font-size: .72rem; color: var(--t1); line-height: 1.7;
+}
+
+/* QR */
+
+/* VNPAY logos */
+
+/* Final summary */
+.co-final-sum {
+  background: var(--s1); border-radius: var(--r2); padding: 16px;
+  margin: 16px 0; border: 1px solid var(--ln);
+}
+
+/* Success panel */
+.co-success { text-align: center; padding: 16px 0 8px }
+.co-success-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(42,106,69,.1); border: 2px solid var(--ok);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ok); margin: 0 auto 20px;
+  animation: coSuccessPop .5s var(--spring) forwards;
+}
+@keyframes coSuccessPop {
+  from { transform: scale(.5); opacity: 0 }
+  to   { transform: scale(1);  opacity: 1 }
+}
+.co-success-title {
+  font-family: var(--ff); font-size: 2.2rem; font-weight: 300;
+  color: var(--i0); margin-bottom: 10px;
+}
+.co-success-sub { font-size: .88rem; color: var(--t2); line-height: 1.8; margin-bottom: 16px }
+.co-success-ref {
+  display: inline-block; padding: 8px 20px;
+  background: var(--s1); border-radius: var(--r1);
+  font-family: var(--fm); font-size: .72rem;
+  color: var(--t1); margin-bottom: 20px; letter-spacing: .06em;
+}
+.co-success-info {
+  background: var(--s1); border-radius: var(--r2);
+  padding: 14px; margin-bottom: 24px; text-align: left;
+}
+.co-sinfo-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: .78rem; color: var(--t1); padding: 5px 0;
+}
+.co-sinfo-row svg { flex-shrink: 0; color: var(--a0); margin-top: 2px }
+.co-success-btns { display: flex; gap: 10px; justify-content: center }
+.co-success-primary {
+  padding: 13px 28px; background: var(--i0); color: var(--s0);
+  border-radius: var(--r1); border: none;
+  font-family: var(--fb); font-size: .68rem; font-weight: 700;
+  letter-spacing: .13em; text-transform: uppercase; cursor: pointer;
+  transition: all .28s var(--out);
+}
+.co-success-primary:hover { background: var(--a0); transform: translateY(-1px) }
+.co-success-secondary {
+  padding: 13px 24px; border: 1px solid var(--ln);
+  border-radius: var(--r1); background: transparent;
+  font-family: var(--fb); font-size: .66rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--t2); transition: all .22s;
+}
+.co-success-secondary:hover { border-color: var(--i0); color: var(--i0) }
+
+@media (max-width: 640px) {
+  .co-row-2, .co-row-3 { grid-template-columns: 1fr }
+  .co-pay-tabs { gap: 6px }
+  .co-pay-tab  { font-size: .62rem; padding: 9px 12px }
+  .co-step-lbl { display: none }
+  .co-step-sep { width: 20px }
+  .co-body { padding: 20px }
+}
+
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- PAGE INTRO -->
+<div id="page-intro">
+  <div class="intro-logo">
+    <img src="logo.png" alt="Coolify"
+      onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-family:var(--ff);font-size:2.4rem;font-weight:300;color:rgba(253,250,246,.9);letter-spacing:.06em\'>coolify</span>'">
+  </div>
+</div>
+
+<!-- LIVE TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-dot"></div>
+  <div class="toast-text">
+    <strong id="toast-name">Lan Anh</strong>
+    <span id="toast-item">vừa đặt Gối CoolTouch®</span>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <img class="nav-logo-img" src="logo.png" alt="Coolify"
+      onerror="this.style.display='none'; document.querySelector('.nav-wordmark').style.display='block'">
+    <span class="nav-wordmark" style="display:none">coolify</span>
+  </a>
+
+  <div class="nav-center">
+    <a href="#products" class="nav-link">Sản phẩm</a>
+    <a href="#usp"      class="nav-link">Công nghệ</a>
+    <a href="#reviews"  class="nav-link">Đánh giá</a>
+    <a href="#faq"      class="nav-link">FAQ</a>
+  </div>
+
+  <div class="nav-right">
+    <button class="nav-cart" id="cartBtn" aria-label="Giỏ hàng">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <span class="nav-pip" id="navPip">0</span>
+    </button>
+    <a href="#products" class="btn btn-accent btn-sm nav-cta">Mua ngay</a>
+    <button class="nav-ham" id="hamBtn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+  <button class="mnav-close" id="mnavClose">✕</button>
+  <a href="#products" class="mnav-link" data-close>Sản phẩm</a>
+  <a href="#usp"      class="mnav-link" data-close>Công nghệ</a>
+  <a href="#reviews"  class="mnav-link" data-close>Đánh giá</a>
+  <a href="#faq"      class="mnav-link" data-close>FAQ</a>
+  <div class="mnav-footer">Hotline <a href="tel:18001234">1800 1234</a> · 8h–22h mỗi ngày</div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <!-- hero-video.mp4 — lifestyle bedroom video, 1080p, < 8MB -->
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-grain"></div>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-scroll">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <div class="scroll-txt">Cuộn</div>
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-eyebrow">Ngủ đúng cách &nbsp;·&nbsp; Sống tốt hơn</div>
+
+    <h1 class="hero-h1">
+      Giấc ngủ của bạn<br>
+      xứng đáng được<br><em>chăm sóc tốt hơn.</em>
+    </h1>
+
+    <p class="hero-sub">
+      <strong>CoolTouch®</strong> giữ bề mặt luôn mát. <strong>AirGuard™</strong> giữ lõi luôn sạch và khô thoáng. Không nóng. Không bí. Ngủ sâu hơn — theo cách tự nhiên nhất.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-accent btn-lg">Khám phá sản phẩm →</a>
+      <a href="#usp"      class="btn btn-ghost-w btn-lg">Xem công nghệ</a>
+    </div>
+
+    <div class="hero-divider"></div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-n">50K+</span><div class="hero-stat-l">Tin dùng</div></div>
+      <div class="hero-stat"><span class="hero-stat-n">4.9★</span><div class="hero-stat-l">Đánh giá</div></div>
+      <div class="hero-stat"><span class="hero-stat-n">30 ngày</span><div class="hero-stat-l">Đổi trả</div></div>
+      <div class="hero-stat"><span class="hero-stat-n">24h</span><div class="hero-stat-l">Giao hàng</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="tick-item">CoolTouch® — mát từ giây đầu tiên</span>
+    <span class="tick-item">AirGuard™ — sạch và khô thoáng suốt đêm</span>
+    <span class="tick-item">Giao hàng trong 24 giờ</span>
+    <span class="tick-item">Đổi trả 30 ngày — miễn phí, không cần lý do</span>
+    <span class="tick-item">An toàn cho trẻ sơ sinh và da nhạy cảm</span>
+    <span class="tick-item">Bền 300+ lần giặt máy</span>
+    <span class="tick-item">ISO 20743 · Oeko-Tex® 100 · FDA Registered</span>
+    <span class="tick-item">CoolTouch® — mát từ giây đầu tiên</span>
+    <span class="tick-item">AirGuard™ — sạch và khô thoáng suốt đêm</span>
+    <span class="tick-item">Giao hàng trong 24 giờ</span>
+    <span class="tick-item">Đổi trả 30 ngày — miễn phí, không cần lý do</span>
+    <span class="tick-item">An toàn cho trẻ sơ sinh và da nhạy cảm</span>
+    <span class="tick-item">Bền 300+ lần giặt máy</span>
+    <span class="tick-item">ISO 20743 · Oeko-Tex® 100 · FDA Registered</span>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-cell">
+      <div class="trust-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+      </div>
+      <div><div class="trust-label">Giao hàng 24 giờ</div><div class="trust-sub">Miễn phí ship từ 500.000đ</div></div>
+    </div>
+    <div class="trust-cell">
+      <div class="trust-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/>
+        </svg>
+      </div>
+      <div><div class="trust-label">Đổi trả trong 30 ngày</div><div class="trust-sub">Miễn phí — không cần lý do</div></div>
+    </div>
+    <div class="trust-cell">
+      <div class="trust-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div><div class="trust-label">Kiểm định quốc tế</div><div class="trust-sub">ISO 20743 · Oeko-Tex® 100</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PRODUCTS ═══ -->
+<section id="products" style="padding:var(--sp16) 0; background:var(--s0)">
+  <div class="wrap">
+    <div class="sh-row">
+      <div>
+        <div class="overline" data-rv="up">Bộ sưu tập</div>
+        <h2 class="sh-title" data-rv="up" data-d="1">Được làm để <em>ngủ ngon hơn.</em></h2>
+      </div>
+      <div class="tab-bar" data-rv="up" data-d="2">
+        <button class="tab-btn active" data-tab="pillows">Gối &amp; Đệm</button>
+        <button class="tab-btn" data-tab="blankets">Chăn &amp; Ga</button>
+        <button class="tab-btn" data-tab="wellness">Tiện Nghi</button>
+      </div>
+    </div>
+
+    <!-- Gối & Đệm — 5 items -->
+    <div class="tab-panel active" id="tab-pillows">
+      <div class="pgrid5">
+
+        <div class="pcard" data-rv="up" data-d="1">
+          <div class="pcard-fig">
+            <!-- goi-ngu.png -->
+            <img src="goi-ngu.png" alt="Gối Ngủ CoolTouch®">
+            <span class="pcard-badge b-ink">Bestseller</span>
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Gối Ngủ CoolTouch®','690.000đ','goi-ngu.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Gối ngủ</div>
+            <div class="pcard-name">Gối Ngủ CoolTouch®</div>
+            <div class="pcard-desc">Mát từ giây đầu tiên. Foam 50D nâng đỡ cổ và cột sống. Không cần trở mặt — mặt nào cũng mát.</div>
+            <div class="pcard-foot">
+              <div><span class="price-old">890.000đ</span><span class="price-now">690.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Gối Ngủ CoolTouch®','690.000đ','goi-ngu.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="2">
+          <div class="pcard-fig">
+            <!-- goi-om-body.png -->
+            <img src="goi-om-body.png" alt="Gối Ôm Body CoolTouch®">
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Gối Ôm Body CoolTouch®','890.000đ','goi-om-body.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Gối ôm</div>
+            <div class="pcard-name">Gối Ôm Body CoolTouch®</div>
+            <div class="pcard-desc">Ôm trọn cơ thể, giảm áp lực hông và vai. Lý tưởng cho mẹ bầu và người hay trằn trọc khi ngủ.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">890.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Gối Ôm Body CoolTouch®','890.000đ','goi-om-body.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="3">
+          <div class="pcard-fig">
+            <!-- goi-lung.png -->
+            <img src="goi-lung.png" alt="Gối Tựa Lưng CoolTouch®">
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Gối Tựa Lưng CoolTouch®','590.000đ','goi-lung.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Gối lưng</div>
+            <div class="pcard-name">Gối Tựa Lưng CoolTouch®</div>
+            <div class="pcard-desc">Nâng đỡ cột sống khi ngồi làm việc hoặc xem phim. Bề mặt CoolTouch® mát suốt ngày.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">590.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Gối Tựa Lưng CoolTouch®','590.000đ','goi-lung.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="4">
+          <div class="pcard-fig">
+            <!-- goi-ngoi.png -->
+            <img src="goi-ngoi.png" alt="Đệm Ngồi CoolTouch®">
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Đệm Ngồi CoolTouch®','490.000đ','goi-ngoi.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Đệm ngồi</div>
+            <div class="pcard-name">Đệm Ngồi CoolTouch®</div>
+            <div class="pcard-desc">Giảm áp lực cột sống khi ngồi lâu. Phù hợp ghế văn phòng, ghế ăn và xe hơi.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">490.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Đệm Ngồi CoolTouch®','490.000đ','goi-ngoi.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="5">
+          <div class="pcard-fig">
+            <!-- vo-goi.png -->
+            <img src="vo-goi.png" alt="Vỏ Gối CoolTouch®">
+            <span class="pcard-badge b-new">Mới</span>
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Vỏ Gối CoolTouch®','290.000đ','vo-goi.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Vỏ gối</div>
+            <div class="pcard-name">Vỏ Gối CoolTouch®</div>
+            <div class="pcard-desc">Bọc gối cũ với vải CoolTouch® cao cấp. Nâng cấp trải nghiệm ngủ với chi phí tối thiểu.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">290.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Vỏ Gối CoolTouch®','290.000đ','vo-goi.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Chăn & Ga -->
+    <div class="tab-panel" id="tab-blankets">
+      <div class="pgrid">
+        <div class="pcard" data-rv="up" data-d="1">
+          <div class="pcard-fig">
+            <!-- chan-mua-dong.png -->
+            <img src="chan-mua-dong.png" alt="Chăn Mùa Đông CoolTouch®">
+            <span class="pcard-badge b-ink">Phổ biến</span>
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Chăn Mùa Đông CoolTouch®','1.290.000đ','chan-mua-dong.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Chăn đông</div>
+            <div class="pcard-name">Chăn Mùa Đông CoolTouch®</div>
+            <div class="pcard-desc">Ấm áp đêm lạnh, không bí bức. Lớp ngoài CoolTouch® điều tiết nhiệt độ tự nhiên suốt đêm.</div>
+            <div class="pcard-foot">
+              <div><span class="price-old">1.590.000đ</span><span class="price-now">1.290.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Chăn Mùa Đông CoolTouch®','1.290.000đ','chan-mua-dong.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="2">
+          <div class="pcard-fig">
+            <!-- chan-mua-ha.png -->
+            <img src="chan-mua-ha.png" alt="Chăn Mùa Hạ Waffle">
+            <span class="pcard-badge b-warm">Hot mùa hè</span>
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Chăn Mùa Hạ Waffle','890.000đ','chan-mua-ha.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Chăn hè</div>
+            <div class="pcard-name">Chăn Mùa Hạ Waffle</div>
+            <div class="pcard-desc">Vải waffle thoáng khí tối đa. Mát, nhẹ, vẫn có cảm giác "đắp chăn" dễ chịu khi ngủ điều hòa.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">890.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Chăn Mùa Hạ Waffle','890.000đ','chan-mua-ha.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="3">
+          <div class="pcard-fig">
+            <!-- ga-trai-giuong.png -->
+            <img src="ga-trai-giuong.png" alt="Ga Trải Giường CoolTouch®">
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Ga Trải Giường CoolTouch®','790.000đ','ga-trai-giuong.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Ga giường</div>
+            <div class="pcard-name">Ga Trải Giường CoolTouch®</div>
+            <div class="pcard-desc">Vừa vặn nệm dày đến 30cm. Co giãn 4 chiều, không bị tuột góc. Giặt 300+ lần không phai.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">790.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Ga Trải Giường CoolTouch®','790.000đ','ga-trai-giuong.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tiện Nghi -->
+    <div class="tab-panel" id="tab-wellness">
+      <div class="pgrid">
+        <div class="pcard" data-rv="up" data-d="1">
+          <div class="pcard-fig">
+            <!-- tieng-on-trang.png -->
+            <img src="tieng-on-trang.png" alt="Máy Tiếng Ồn Trắng Coolify">
+            <span class="pcard-badge b-ink">Mới</span>
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Máy Tiếng Ồn Trắng Coolify','890.000đ','tieng-on-trang.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Âm thanh ngủ</div>
+            <div class="pcard-name">Máy Tiếng Ồn Trắng</div>
+            <div class="pcard-desc">32 âm thanh thiên nhiên và white noise. Che tiếng ồn đô thị, cải thiện giấc ngủ sâu đến 40%.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">890.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Máy Tiếng Ồn Trắng Coolify','890.000đ','tieng-on-trang.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="2">
+          <div class="pcard-fig">
+            <!-- may-tinh-dau.png -->
+            <img src="may-tinh-dau.png" alt="Máy Khuếch Tán Tinh Dầu Coolify">
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Máy Khuếch Tán Tinh Dầu Coolify','690.000đ','may-tinh-dau.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Hương thơm</div>
+            <div class="pcard-name">Máy Khuếch Tán Tinh Dầu</div>
+            <div class="pcard-desc">Khuếch tán tinh dầu ngủ ngon tự nhiên. Hẹn giờ 1–8h, ánh đèn ngủ dịu, hoạt động cực kỳ yên tĩnh.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">690.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Máy Khuếch Tán Tinh Dầu Coolify','690.000đ','may-tinh-dau.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pcard" data-rv="up" data-d="3">
+          <div class="pcard-fig">
+            <!-- khu-khuan.png -->
+            <img src="khu-khuan.png" alt="Xịt Kháng Khuẩn BioShield™">
+            <span class="pcard-badge b-warm">Phải có</span>
+            <div class="pcard-overlay">
+              <button class="pcard-qadd" onclick="addToCart('Xịt Kháng Khuẩn BioShield™','390.000đ','khu-khuan.png')">+ Thêm vào giỏ hàng</button>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-cat">Vệ sinh</div>
+            <div class="pcard-name">Xịt Kháng Khuẩn BioShield™</div>
+            <div class="pcard-desc">Diệt 99.9% vi khuẩn và mạt giường trong 30 giây. An toàn tuyệt đối cho trẻ sơ sinh.</div>
+            <div class="pcard-foot">
+              <div><span class="price-now">390.000đ</span></div>
+              <button class="pcard-btn" onclick="addToCart('Xịt Kháng Khuẩn BioShield™','390.000đ','khu-khuan.png')">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-cell" data-rv="up" data-d="1">
+      <span class="stat-n">3–5°C</span>
+      <div class="stat-t">Mát hơn cotton</div>
+      <div class="stat-d">Nhiệt độ bề mặt thấp hơn rõ rệt. Đo lường độc lập trong điều kiện thực tế.</div>
+    </div>
+    <div class="stat-cell" data-rv="up" data-d="2">
+      <span class="stat-n">99.9%</span>
+      <div class="stat-t">Kháng khuẩn</div>
+      <div class="stat-d">AirGuard™ ức chế vi khuẩn và nấm mốc. Bền vĩnh viễn, không bị rửa trôi.</div>
+    </div>
+    <div class="stat-cell" data-rv="up" data-d="3">
+      <span class="stat-n">50K+</span>
+      <div class="stat-t">Khách tin dùng</div>
+      <div class="stat-d">Từ TP.HCM đến Hà Nội. Điểm đánh giá trung bình 4.9/5 sao.</div>
+    </div>
+    <div class="stat-cell" data-rv="up" data-d="4">
+      <span class="stat-n">2 năm</span>
+      <div class="stat-t">Bảo hành chính hãng</div>
+      <div class="stat-d">Đổi mới nếu lỗi sản xuất. Hotline 1800 1234 hỗ trợ 7 ngày/tuần.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TECHNOLOGY ═══ -->
+<section id="usp">
+
+
+  <div class="tech-split">
+    <div class="tech-img tech-img-dark">
+      <!-- ĐẶT ẢNH: pillow-outer.png — ảnh exploded/tách lớp thấy vỏ vải CoolTouch® -->
+      <img src="pillow-outer.png" alt="CoolTouch® Outer Shell — lớp vỏ vải dẫn nhiệt" onerror="this.style.background='#1c1914'">
+      <div class="tech-deco-num">1</div>
+    </div>
+    <div class="tech-copy tech-dark">
+      <div class="tech-ov" data-rv="up">❄ Lớp 1 — Cooling</div>
+      <h2 class="tech-h" data-rv="up" data-d="1">CoolTouch®<br><em>Outer Shell</em></h2>
+      <p class="tech-p" data-rv="up" data-d="2">Lớp vải tiếp xúc trực tiếp với làn da mỗi đêm. CoolTouch® giúp dẫn nhiệt nhanh, giữ bề mặt luôn mát — ngay cả khi bạn xoay người hay thay đổi tư thế.</p>
+      <p class="tech-p" style="margin-top:-var(--sp3);font-style:italic;font-family:var(--ff);color:rgba(253,250,246,.28);font-size:1rem" data-rv="up" data-d="2">Không cần làm mát trước. Không giữ nhiệt.</p>
+      <div class="tech-facts" data-rv="up" data-d="3">
+        <div class="tech-fact"><span class="tech-fn">3–5°C</span><span class="tech-ft">Mát hơn cotton — đo trong điều kiện thực tế</span></div>
+        <div class="tech-fact"><span class="tech-fn">0.3s</span><span class="tech-ft">Cảm nhận mát gần như ngay lập tức khi chạm tay</span></div>
+        <div class="tech-fact"><span class="tech-fn">300+</span><span class="tech-ft">Lần giặt — hiệu năng vẫn ổn định theo thời gian</span></div>
+      </div>
+      <div class="tech-tagline" data-rv="up" data-d="4">Một cảm giác mát — duy trì suốt cả đêm.</div>
+      <a href="#products" class="tech-cta" style="margin-top:var(--sp4)" data-rv="up" data-d="5">Xem sản phẩm CoolTouch® →</a>
+    </div>
+  </div>
+
+
+  <div class="tech-split-r">
+    <div class="tech-copy tech-light">
+      <div class="tech-ov" data-rv="up">🛡 Lớp 2 — Hygiene</div>
+      <h2 class="tech-h" data-rv="up" data-d="1">AirGuard™<br><em>Hygienic Core</em></h2>
+      <p class="tech-p" data-rv="up" data-d="2">Bên trong gối là nơi bạn không nhìn thấy. Nhưng lại là nơi quyết định cảm giác dễ chịu mỗi đêm. AirGuard™ được thiết kế để giữ môi trường bên trong luôn khô thoáng, hạn chế tích tụ ẩm — yếu tố chính gây mùi và vi khuẩn.</p>
+      <p class="tech-p" style="margin-top:-var(--sp3);font-style:italic;font-family:var(--ff);color:var(--t3);font-size:1rem" data-rv="up" data-d="2">Không cần chú ý. Nhưng luôn hiện diện.</p>
+      <div class="tech-facts" data-rv="up" data-d="3">
+        <div class="tech-fact"><span class="tech-fn">Thoáng khí</span><span class="tech-ft">Cấu trúc giữ không khí lưu chuyển tự nhiên bên trong lõi</span></div>
+        <div class="tech-fact"><span class="tech-fn">Khô thoáng</span><span class="tech-ft">Hạn chế tích tụ ẩm — giúp duy trì cảm giác sạch lâu dài</span></div>
+        <div class="tech-fact"><span class="tech-fn">Bền vững</span><span class="tech-ft">Hiệu quả không giảm sau nhiều năm sử dụng</span></div>
+      </div>
+      <div class="tech-tagline" style="color:var(--a0)" data-rv="up" data-d="4">Không chỉ êm khi nằm xuống — mà còn sạch theo thời gian.</div>
+      <a href="#products" class="tech-cta" style="margin-top:var(--sp4)" data-rv="up" data-d="5">Xem toàn bộ dòng gối Coolify →</a>
+    </div>
+    <div class="tech-img tech-img-light">
+      <!-- THAY BẰNG: ảnh mặt cắt lõi gối, thấy rõ cấu trúc foam + microfiber bên trong -->
+      <!-- Filename gợi ý: pillow-core.png hoặc pillow-cross-section.png -->
+      <!-- ĐẶT ẢNH: pillow-core.png — ảnh mặt cắt/lõi bên trong gối -->
+      <img src="pillow-core.png" alt="CoreFill™ Inner Structure — lõi foam 50D + microfiber" onerror="this.style.background='#f5f0e8'">
+      <div class="tech-deco-num">2</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<div class="reviews-wrap" id="reviews">
+  <div class="reviews-inner">
+    <div class="sh-row" style="margin-bottom:var(--sp7)">
+      <div>
+        <div class="overline" data-rv="up">Khách hàng nói gì</div>
+        <h2 class="sh-title" data-rv="up" data-d="1">Hơn 50.000 người<br><em>đã ngủ ngon hơn.</em></h2>
+      </div>
+    </div>
+
+    <div class="rating-row" data-rv="fade">
+      <div>
+        <div class="rating-big">4.9</div>
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-cnt">Dựa trên 3.847 đánh giá</div>
+      </div>
+      <div class="rbars">
+        <div class="rbar"><span class="rbar-l">5★</span><div class="rbar-t"><div class="rbar-f" data-w="88%"></div></div><span class="rbar-p">88%</span></div>
+        <div class="rbar"><span class="rbar-l">4★</span><div class="rbar-t"><div class="rbar-f" data-w="9%"></div></div><span class="rbar-p">9%</span></div>
+        <div class="rbar"><span class="rbar-l">3★</span><div class="rbar-t"><div class="rbar-f" data-w="2%"></div></div><span class="rbar-p">2%</span></div>
+        <div class="rbar"><span class="rbar-l">2★</span><div class="rbar-t"><div class="rbar-f" data-w="1%"></div></div><span class="rbar-p">1%</span></div>
+        <div class="rbar"><span class="rbar-l">1★</span><div class="rbar-t"><div class="rbar-f" data-w="0%"></div></div><span class="rbar-p">0%</span></div>
+      </div>
+      <div class="rtags">
+        <div class="rtag"><strong>94%</strong> nói mát hơn gối cũ</div>
+        <div class="rtag"><strong>91%</strong> giảm thức giữa đêm</div>
+        <div class="rtag"><strong>97%</strong> sẽ giới thiệu bạn bè</div>
+        <div class="rtag"><strong>89%</strong> mua thêm lần 2</div>
+      </div>
+    </div>
+
+    <div class="rv-grid">
+      <div class="rcard" data-rv="up" data-d="1">
+        <div class="rcard-head"><div class="rcard-stars">★★★★★</div><div class="rcard-prod">Gối Ngủ<br>CoolTouch®</div></div>
+        <div class="rcard-q">"Tôi đã dùng thử nhiều loại gối 'mát' khác nhưng chỉ Coolify là thật sự mát ngay từ đêm đầu tiên. Sáng thức dậy không còn đau cổ."</div>
+        <div class="rcard-au">
+          <div class="rcard-av">N</div>
+          <div><div class="rcard-name">Nguyễn Thị Hương</div><div class="rcard-loc">TP.HCM · Đã mua 2 lần</div><div class="rcard-v">✓ Đã xác minh mua hàng</div></div>
+        </div>
+      </div>
+      <div class="rcard" data-rv="up" data-d="2">
+        <div class="rcard-head"><div class="rcard-stars">★★★★★</div><div class="rcard-prod">Chăn Hè<br>Waffle</div></div>
+        <div class="rcard-q">"Chồng tôi hay đạp chăn vì nóng. Dùng Coolify Waffle 2 tuần thì anh ấy không còn than nóng nữa. Cả nhà ngủ ngon hơn hẳn."</div>
+        <div class="rcard-au">
+          <div class="rcard-av">T</div>
+          <div><div class="rcard-name">Trần Lan Anh</div><div class="rcard-loc">Hà Nội · Đã mua 3 lần</div><div class="rcard-v">✓ Đã xác minh mua hàng</div></div>
+        </div>
+      </div>
+      <div class="rcard" data-rv="up" data-d="3">
+        <div class="rcard-head"><div class="rcard-stars">★★★★★</div><div class="rcard-prod">Gối Ôm<br>Body</div></div>
+        <div class="rcard-q">"Đang mang thai 7 tháng. Gối Coolify mát, không bị nóng lưng, nâng đỡ bụng rất tốt. Đặt thêm 1 cái nữa rồi."</div>
+        <div class="rcard-au">
+          <div class="rcard-av">P</div>
+          <div><div class="rcard-name">Phạm Thảo Vy</div><div class="rcard-loc">Đà Nẵng · Mẹ bầu tháng 7</div><div class="rcard-v">✓ Đã xác minh mua hàng</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ FAQ ═══ -->
+<div class="faq-wrap" id="faq">
+  <div class="faq-inner">
+    <div class="faq-head" data-rv="up">
+      <div class="overline" style="justify-content:center;margin-bottom:var(--sp2)">Giải đáp</div>
+      <h2 class="faq-title">Câu hỏi <em>thường gặp</em></h2>
+      <p class="faq-sub">Mọi thứ bạn cần biết trước khi đặt hàng.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qt">CoolTouch® hoạt động như thế nào? Có thật sự mát không?</span><span class="faq-ic">+</span></div>
+      <div class="faq-ans"><div class="faq-ans-in">CoolTouch® sử dụng sợi vải kỹ thuật cao hấp thụ nhiệt từ da và tản ra ngoài nhanh hơn cotton 3–5 lần. Đây là công nghệ dẫn nhiệt — không phải làm lạnh — nên hiệu quả không phụ thuộc vào điều hòa. Kiểm định độc lập cho thấy nhiệt độ bề mặt giảm 3–5°C so với cotton thông thường.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qt">Sản phẩm có phù hợp cho trẻ nhỏ và người da nhạy cảm không?</span><span class="faq-ic">+</span></div>
+      <div class="faq-ans"><div class="faq-ans-in">Có. Toàn bộ sản phẩm Coolify đạt chuẩn Oeko-Tex® Standard 100 — không chứa hóa chất độc hại, an toàn cho trẻ sơ sinh và người có làn da nhạy cảm. BioShield™ hoàn toàn không mùi và không độc hại.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qt">Giặt như thế nào? Tính năng có bị mất sau nhiều lần giặt không?</span><span class="faq-ic">+</span></div>
+      <div class="faq-ans"><div class="faq-ans-in">Giặt máy bình thường ở 40°C, không tẩy. CoolTouch® và BioShield™ được thiết kế bền 300+ lần giặt mà vẫn giữ nguyên tính năng — khác hoàn toàn với sản phẩm "mát" thông thường trên thị trường.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qt">Tôi có thể đổi trả nếu không hài lòng không?</span><span class="faq-ic">+</span></div>
+      <div class="faq-ans"><div class="faq-ans-in">Có. Coolify áp dụng chính sách đổi trả 30 ngày hoàn toàn miễn phí — không cần lý do. Gọi hotline 1800 1234 (8h–22h) hoặc chat trực tiếp, đội ngũ xử lý trong 24 giờ.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qt">Thời gian giao hàng và phí vận chuyển như thế nào?</span><span class="faq-ic">+</span></div>
+      <div class="faq-ans"><div class="faq-ans-in">Giao trong 24 giờ cho TP.HCM và Hà Nội, 1–3 ngày cho các tỉnh thành khác. Miễn phí vận chuyển đơn từ 500.000đ. Đơn dưới 500.000đ phí ship từ 20.000–35.000đ tùy khu vực.</div></div>
+    </div>
+
+    <p class="faq-foot">Còn thắc mắc? <a href="tel:18001234">Gọi 1800 1234</a> hoặc <a href="#">Chat trực tiếp</a></p>
+  </div>
+</div>
+
+<!-- ═══ CTA CLOSING ═══ -->
+<section class="cta-close" data-rv="fade">
+  <div class="cta-close-inner">
+    <div class="cta-tag">Bắt đầu hôm nay</div>
+    <h2 class="cta-close-h">Một thay đổi nhỏ —<br><em>sự khác biệt mỗi sáng.</em></h2>
+    <p class="cta-close-p">Gối đúng. Chăn đúng. Bạn thức dậy nhẹ nhàng hơn, minh mẫn hơn — mỗi ngày.</p>
+    <div class="cta-close-btns">
+      <a href="#products" class="btn btn-primary btn-xl">Mua ngay →</a>
+      <a href="#ai-chat" class="btn btn-outline btn-xl">Hỏi AI Coolify</a>
+    </div>
+    <div class="cta-close-trust">
+      <span>✓ Đổi trả 30 ngày miễn phí</span>
+      <span>✓ Freeship từ 500.000đ</span>
+      <span>✓ Bảo hành 2 năm chính hãng</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI CHATBOT SECTION ═══ -->
+<section class="ai-section" id="ai-chat">
+  <div class="ai-inner">
+    <div class="ai-header">
+      <div class="overline overline-light" data-rv="up">Tư vấn thông minh</div>
+      <h2 class="ai-title" data-rv="up" data-d="1">Hỏi AI Coolify</h2>
+      <p class="ai-subtitle" data-rv="up" data-d="2">Hỏi thẳng — AI sẽ giúp bạn chọn đúng sản phẩm phù hợp với cơ thể và thói quen ngủ.</p>
+    </div>
+
+    <div class="ai-chat-wrap" data-rv="up" data-d="3">
+      <!-- Quick questions -->
+      <div class="ai-quick-label">Câu hỏi thường gặp</div>
+      <div class="ai-quick-pills" id="quickPills">
+        <button class="ai-pill" onclick="sendQuick(this)">Tôi hay nóng khi ngủ, nên chọn gối nào?</button>
+        <button class="ai-pill" onclick="sendQuick(this)">Gối CoolTouch® có phù hợp cho trẻ em không?</button>
+        <button class="ai-pill" onclick="sendQuick(this)">AirGuard™ khác gì với gối thường?</button>
+        <button class="ai-pill" onclick="sendQuick(this)">Tôi bị đau cổ, gối nào giúp được tôi?</button>
+        <button class="ai-pill" onclick="sendQuick(this)">Cách bảo quản và vệ sinh gối Coolify?</button>
+      </div>
+
+      <!-- Chat window -->
+      <div class="ai-messages" id="aiMessages">
+        <div class="ai-msg ai-msg-bot">
+          <div class="ai-msg-avatar">✦</div>
+          <div class="ai-msg-bubble">Xin chào! Tôi là AI tư vấn của Coolify. Bạn đang tìm kiếm điều gì cho giấc ngủ của mình? Tôi có thể giúp bạn chọn đúng sản phẩm phù hợp nhất.</div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="ai-input-row">
+        <input
+          class="ai-input"
+          id="aiInput"
+          type="text"
+          placeholder="Nhập câu hỏi của bạn..."
+          onkeydown="if(event.key==='Enter')sendAI()"
+          maxlength="300"
+        >
+        <button class="ai-send" id="aiSendBtn" onclick="sendAI()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+      <div class="ai-disclaimer">AI có thể mắc lỗi. Với đơn hàng cụ thể, vui lòng gọi <a href="tel:18001234">1800 1234</a>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ═══ -->
+<div class="nl-wrap" data-rv="fade">
+  <div class="nl-inner">
+    <div class="nl-ov">Ưu đãi thành viên</div>
+    <h2 class="nl-h">Nhận ưu đãi<br><em>thành viên Coolify.</em></h2>
+    <p class="nl-p">Mã giảm <strong>10%</strong> cho đơn đầu tiên. Cùng nội dung chuyên sâu về giấc ngủ mỗi tuần — từ đội ngũ chuyên gia của chúng tôi.</p>
+    <div class="nl-form">
+      <input class="nl-inp" type="email" id="nlEmail" placeholder="Nhập email của bạn...">
+      <button class="nl-sub" id="nlBtn" onclick="handleNL()">Nhận mã 10%</button>
+    </div>
+    <p class="nl-note">Không spam. Huỷ bất cứ lúc nào. Đã có 12.000+ thành viên.</p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="ft-main">
+    <div>
+      <a href="#">
+        <!-- logo.png -->
+        <img class="ft-logo-img" src="logo.png" alt="Coolify"
+          onerror="this.style.display='none'; document.querySelector('.ft-wordmark').style.display='block'">
+        <span class="ft-wordmark" style="display:none">coolify</span>
+      </a>
+      <p class="ft-tag">Ngủ đúng cách. Sống tốt hơn. Được làm để bạn thức dậy nhẹ nhàng mỗi sáng.</p>
+      <div class="ft-socs">
+        <a href="#" class="ft-soc">FB</a>
+        <a href="#" class="ft-soc">IG</a>
+        <a href="#" class="ft-soc">TT</a>
+        <a href="#" class="ft-soc">YT</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5>Sản phẩm</h5>
+      <ul class="ft-links">
+        <li><a href="#">Gối &amp; Đệm</a></li>
+        <li><a href="#">Chăn &amp; Ga</a></li>
+        <li><a href="#">Tiện Nghi Ngủ</a></li>
+        <li><a href="#">Bộ Combo</a></li>
+        <li><a href="#">Quà Tặng</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Hỗ trợ</h5>
+      <ul class="ft-links">
+        <li><a href="#">Hướng dẫn chọn gối</a></li>
+        <li><a href="#">Chính sách đổi trả</a></li>
+        <li><a href="#">Theo dõi đơn hàng</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="tel:18001234">1800 1234 (8h–22h)</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Công ty</h5>
+      <ul class="ft-links">
+        <li><a href="#">Về Coolify</a></li>
+        <li><a href="#">Blog Ngủ Ngon</a></li>
+        <li><a href="#">Cửa hàng</a></li>
+        <li><a href="#">Đại lý</a></li>
+        <li><a href="#">Tuyển dụng</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div>
+      <p class="ft-copy">© 2026 Coolify Vietnam · Hotline: 1800 1234 (8h–22h) · MST: 0123456789</p>
+      <div class="ft-certs">
+        <span class="ft-cert">ISO 20743</span>
+        <span class="ft-cert">Oeko-Tex® 100</span>
+        <span class="ft-cert">FDA Registered</span>
+        <span class="ft-cert">AATCC 100</span>
+      </div>
+    </div>
+    <div class="ft-pays">
+      <div class="ft-pay">VNPAY</div>
+      <div class="ft-pay">Visa</div>
+      <div class="ft-pay">Mastercard</div><div class="ft-pay">COD</div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART OVERLAY + DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="c-head">
+    <div class="c-head-title">Giỏ hàng</div>
+    <button class="c-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="c-prog">
+    <div class="c-prog-txt" id="progTxt">Thêm <strong>500.000đ</strong> để được freeship</div>
+    <div class="c-prog-t"><div class="c-prog-f" id="progFill"></div></div>
+  </div>
+  <div class="c-body" id="cBody">
+    <div class="c-empty"><div class="c-empty-ico">🛍️</div><p>Giỏ hàng đang trống</p></div>
+  </div>
+  <div class="c-up" id="cUpsell" style="display:none">
+    <div class="c-up-l">Gợi ý thêm vào</div>
+    <div class="c-up-r">
+      <!-- khu-khuan.png -->
+      <div class="c-up-img"><img src="khu-khuan.png" alt="Xịt BioShield™"></div>
+      <span class="c-up-name">Xịt BioShield™</span>
+      <span class="c-up-price">390K</span>
+      <button class="c-up-add" onclick="addToCart('Xịt Kháng Khuẩn BioShield™','390.000đ','khu-khuan.png')">+ Thêm</button>
+    </div>
+  </div>
+  <div class="c-foot" id="cFoot" style="display:none">
+    <div class="c-subtotal-row">
+      <span class="c-subtotal-l">Tạm tính</span>
+      <span class="c-subtotal-v" id="cSubVal">0đ</span>
+    </div>
+    <div class="c-subtotal-row">
+      <span class="c-subtotal-l">Phí vận chuyển</span>
+      <span class="c-subtotal-v free" id="cShipVal">Tính khi đặt hàng</span>
+    </div>
+    <div class="c-total">
+      <span class="c-total-l">Tổng cộng</span>
+      <span class="c-total-v" id="cTotalVal">0đ</span>
+    </div>
+    <button class="c-checkout" onclick="openCheckout()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Đặt hàng ngay
+    </button>
+    <div class="c-or">— hoặc —</div>
+    <div class="c-pay-methods">
+      <button class="c-pay-btn" onclick="openCheckout('bank')" style="width:100%;justify-content:center">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><line x1="9" y1="22" x2="9" y2="12"/><line x1="15" y1="22" x2="15" y2="12"/></svg>Chuyển khoản ngân hàng
+      </button>
+    </div>
+    <div class="c-trust">
+      <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Bảo mật SSL</span>
+      <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>Đổi trả 30 ngày</span>
+      <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Ship 500K+</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="co-overlay" id="coOverlay" onclick="closeCheckout()"></div>
+<div class="co-modal" id="coModal">
+
+  <!-- Header -->
+  <div class="co-header">
+    <div class="co-steps">
+      <div class="co-step active" id="coStep1">
+        <span class="co-step-num">1</span>
+        <span class="co-step-lbl">Thông tin</span>
+      </div>
+      <div class="co-step-sep"></div>
+      <div class="co-step" id="coStep2">
+        <span class="co-step-num">2</span>
+        <span class="co-step-lbl">Thanh toán</span>
+      </div>
+      <div class="co-step-sep"></div>
+      <div class="co-step" id="coStep3">
+        <span class="co-step-num">3</span>
+        <span class="co-step-lbl">Xác nhận</span>
+      </div>
+    </div>
+    <button class="co-close" onclick="closeCheckout()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div class="co-body">
+    <!-- ── PANEL 1: THÔNG TIN ── -->
+    <div class="co-panel active" id="coPanel1">
+      <div class="co-section-title">Thông tin giao hàng</div>
+
+      <div class="co-row-2">
+        <div class="co-field">
+          <label class="co-label">Họ và tên <span class="co-req">*</span></label>
+          <input class="co-input" id="coName" type="text" placeholder="Nguyễn Văn A" autocomplete="name">
+        </div>
+        <div class="co-field">
+          <label class="co-label">Số điện thoại <span class="co-req">*</span></label>
+          <input class="co-input" id="coPhone" type="tel" placeholder="0901 234 567" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="co-field">
+        <label class="co-label">Email <span class="co-req">*</span></label>
+        <input class="co-input" id="coEmail" type="email" placeholder="email@example.com" autocomplete="email">
+      </div>
+
+      <div class="co-field">
+        <label class="co-label">Địa chỉ giao hàng <span class="co-req">*</span></label>
+        <input class="co-input" id="coAddr" type="text" placeholder="Số nhà, tên đường, phường/xã" autocomplete="street-address">
+      </div>
+
+      <div class="co-row-3">
+        <div class="co-field">
+          <label class="co-label">Tỉnh / Thành phố <span class="co-req">*</span></label>
+          <select class="co-select" id="coCity" onchange="updateShipping()">
+            <option value="">Chọn tỉnh thành</option>
+            <option value="hcm">TP. Hồ Chí Minh</option>
+            <option value="hn">Hà Nội</option>
+            <option value="dn">Đà Nẵng</option>
+            <option value="other">Tỉnh thành khác</option>
+          </select>
+        </div>
+        <div class="co-field">
+          <label class="co-label">Quận / Huyện</label>
+          <input class="co-input" id="coDistrict" type="text" placeholder="Quận 1">
+        </div>
+        <div class="co-field">
+          <label class="co-label">Ghi chú</label>
+          <input class="co-input" id="coNote" type="text" placeholder="Giao giờ hành chính...">
+        </div>
+      </div>
+
+      <!-- Shipping options -->
+      <div class="co-section-title" style="margin-top:20px">Phương thức vận chuyển</div>
+      <div class="co-ship-opts" id="coShipOpts">
+        <label class="co-ship-opt">
+          <input type="radio" name="shipping" value="standard" checked onchange="selectShipping(this)">
+          <div class="co-ship-opt-body">
+            <div class="co-ship-name">Giao hàng tiêu chuẩn</div>
+            <div class="co-ship-desc">2–3 ngày làm việc · TP.HCM &amp; HN</div>
+          </div>
+          <div class="co-ship-price" id="stdPrice">30.000đ</div>
+        </label>
+        <label class="co-ship-opt">
+          <input type="radio" name="shipping" value="express" onchange="selectShipping(this)">
+          <div class="co-ship-opt-body">
+            <div class="co-ship-name">Giao hàng nhanh</div>
+            <div class="co-ship-desc">Trong ngày hoặc hôm sau</div>
+          </div>
+          <div class="co-ship-price">50.000đ</div>
+        </label>
+        <label class="co-ship-opt" id="freeShipOpt" style="display:none">
+          <input type="radio" name="shipping" value="free" onchange="selectShipping(this)">
+          <div class="co-ship-opt-body">
+            <div class="co-ship-name">Miễn phí vận chuyển</div>
+            <div class="co-ship-desc">Đơn từ 500.000đ — 2–3 ngày làm việc</div>
+          </div>
+          <div class="co-ship-price free">Miễn phí</div>
+        </label>
+      </div>
+
+      <!-- Order summary mini -->
+      <div class="co-mini-sum" id="coMiniSum"></div>
+
+      <button class="co-next-btn" onclick="goToPayment()">
+        Tiếp theo: Thanh toán
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+
+    <!-- ── PANEL 2: THANH TOÁN ── -->
+    <div class="co-panel" id="coPanel2">
+      <div class="co-section-title">Phương thức thanh toán</div>
+
+      <!-- Payment method tabs -->
+      <div class="co-pay-tabs">
+        <button class="co-pay-tab active" data-method="cod" onclick="selectPayMethod(this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Tiền mặt (COD)
+        </button>
+        <button class="co-pay-tab" data-method="bank" onclick="selectPayMethod(this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          Chuyển khoản
+        </button>
+
+      </div>
+
+      <!-- COD -->
+      <div class="co-method-panel active" id="method-cod">
+        <div class="co-info-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <p>Thanh toán khi nhận hàng. Bạn chỉ trả tiền sau khi đã nhận và kiểm tra sản phẩm.</p>
+        </div>
+        <div class="co-cod-note">
+          <div class="co-cod-icon">💵</div>
+          <div>
+            <div class="co-cod-title">Hướng dẫn thanh toán COD</div>
+            <div class="co-cod-desc">Nhân viên giao hàng sẽ thu tiền trực tiếp. Vui lòng chuẩn bị đúng số tiền để tiện giao dịch.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank transfer -->
+      <div class="co-method-panel" id="method-bank">
+        <div class="co-bank-card">
+          <div class="co-bank-header">
+            <div class="co-bank-logo">🏦</div>
+            <div>
+              <div class="co-bank-name">Vietcombank</div>
+              <div class="co-bank-sub">Thanh toán chuyển khoản</div>
+            </div>
+          </div>
+          <div class="co-bank-rows">
+            <div class="co-bank-row">
+              <span class="co-bank-l">Số tài khoản</span>
+              <span class="co-bank-v">0123 4567 8901</span>
+              <button class="co-copy-btn" onclick="copyText('0123456789101')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+            <div class="co-bank-row">
+              <span class="co-bank-l">Chủ tài khoản</span>
+              <span class="co-bank-v">COOLIFY VIETNAM</span>
+            </div>
+            <div class="co-bank-row">
+              <span class="co-bank-l">Nội dung CK</span>
+              <span class="co-bank-v co-bank-highlight" id="coTransferRef">COOLIFY-ORDER</span>
+              <button class="co-copy-btn" id="copyRefBtn" onclick="copyRef()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+            <div class="co-bank-row">
+              <span class="co-bank-l">Số tiền</span>
+              <span class="co-bank-v co-bank-amount" id="coTransferAmt">0đ</span>
+            </div>
+          </div>
+          <div class="co-bank-note">Đơn hàng sẽ được xử lý sau khi xác nhận chuyển khoản (trong vòng 1–2 giờ làm việc).</div>
+        </div>
+      </div>
+
+
+
+      <!-- VNPAY -->
+
+      <!-- Order final summary -->
+      <div class="co-final-sum" id="coFinalSum"></div>
+
+      <div class="co-panel-btns">
+        <button class="co-back-btn" onclick="goToInfo()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Quay lại
+        </button>
+        <button class="co-confirm-btn" id="coConfirmBtn" onclick="confirmOrder()">
+          Xác nhận đặt hàng
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── PANEL 3: XÁC NHẬN / THÀNH CÔNG ── -->
+    <div class="co-panel" id="coPanel3">
+      <div class="co-success">
+        <div class="co-success-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 class="co-success-title">Đặt hàng thành công!</h3>
+        <p class="co-success-sub">Cảm ơn bạn đã tin tưởng Coolify. Chúng tôi sẽ liên hệ xác nhận trong vòng 30 phút.</p>
+        <div class="co-success-ref">Mã đơn hàng: <strong id="coOrderRef">—</strong></div>
+        <div class="co-success-info">
+          <div class="co-sinfo-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.17 7.86a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            Xác nhận qua: <span id="coConfPhone">—</span>
+          </div>
+          <div class="co-sinfo-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Giao đến: <span id="coConfAddr">—</span>
+          </div>
+        </div>
+        <div class="co-success-btns">
+          <button class="co-success-primary" onclick="closeCheckout(); closeCart()">Tiếp tục mua hàng</button>
+          <a href="tel:18001234" class="co-success-secondary">Gọi hỗ trợ 1800 1234</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY BAR -->
+<div class="sbar" id="sbar">
+  <div class="sbar-txt"><strong>Coolify</strong> — Thức dậy khác đi mỗi sáng.</div>
+  <a href="#products" class="btn btn-accent btn-sm">Mua ngay</a>
+</div>
+
+<!-- FLOAT ACTIONS -->
+<div class="float-wrap" id="floatWrap">
+  <a href="tel:18001234" class="f-btn f-phone" title="Gọi 1800 1234">📞</a>
+  <a href="#ai-chat" class="f-btn f-chat" title="Hỏi AI Coolify">✦</a>
+</div>
+
+<script>
+'use strict';
+
+/* ─────────────────────────────────────────────
+   SCROLL STATE
+───────────────────────────────────────────── */
+const NAV   = document.getElementById('nav');
+const SBAR  = document.getElementById('sbar');
+const FLOAT = document.getElementById('floatWrap');
+let ticking = false;
+
+const PROGRESS = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const y    = window.scrollY;
+      const max  = document.documentElement.scrollHeight - window.innerHeight;
+      const pct  = max > 0 ? (y / max) * 100 : 0;
+      if (PROGRESS) PROGRESS.style.width = pct.toFixed(1) + '%';
+      NAV.classList.toggle('scrolled', y > 60);
+      SBAR.classList.toggle('show', y > 520);
+      FLOAT.classList.toggle('show', y > 520);
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
+/* ─────────────────────────────────────────────
+   MOBILE NAV
+───────────────────────────────────────────── */
+const hamBtn  = document.getElementById('hamBtn');
+const mNav    = document.getElementById('mobile-nav');
+const mClose  = document.getElementById('mnavClose');
+
+const openMNav  = () => { hamBtn.classList.add('open'); mNav.classList.add('open'); document.body.style.overflow = 'hidden' };
+const closeMNav = () => { hamBtn.classList.remove('open'); mNav.classList.remove('open'); document.body.style.overflow = '' };
+
+hamBtn.addEventListener('click', () => mNav.classList.contains('open') ? closeMNav() : openMNav());
+mClose.addEventListener('click', closeMNav);
+document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeMNav));
+
+/* ─────────────────────────────────────────────
+   INTERSECTION REVEAL
+───────────────────────────────────────────── */
+const revIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('revealed'); revIO.unobserve(e.target) }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('[data-rv]').forEach(el => revIO.observe(el));
+
+/* Rating bars */
+const barIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.rbar-f').forEach(b => b.style.width = b.dataset.w);
+      barIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const ratRow = document.querySelector('.rating-row');
+if (ratRow) barIO.observe(ratRow);
+
+/* ─────────────────────────────────────────────
+   PRODUCT TABS
+───────────────────────────────────────────── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById('tab-' + btn.dataset.tab);
+    if (panel) {
+      panel.classList.add('active');
+      panel.querySelectorAll('[data-rv]').forEach(el => {
+        el.classList.remove('revealed');
+        setTimeout(() => revIO.observe(el), 40);
+      });
+    }
+  });
+});
+
+/* ─────────────────────────────────────────────
+   FAQ ACCORDION
+───────────────────────────────────────────── */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const ans  = item.querySelector('.faq-ans');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-ans').style.maxHeight = '0';
+    });
+    if (!open) {
+      item.classList.add('open');
+      ans.style.maxHeight = (ans.scrollHeight + 24) + 'px';
+    }
+  });
+});
+
+/* ─────────────────────────────────────────────
+   CART
+───────────────────────────────────────────── */
+let CART = [];
+const SHIP = 500000;
+const toInt   = s => parseInt(String(s).replace(/\D/g,'')) || 0;
+const toVND   = n => n.toLocaleString('vi-VN') + 'đ';
+const cartSum = () => CART.reduce((s, i) => s + toInt(i.price) * i.qty, 0);
+const cartCnt = () => CART.reduce((s, i) => s + i.qty, 0);
+
+function addToCart(name, price, img) {
+  const ex = CART.find(i => i.name === name);
+  ex ? ex.qty++ : CART.push({ name, price, img, qty: 1 });
+  renderCart();
+  openCart();
+  showToast(name);
+}
+
+function renderCart() {
+  const body   = document.getElementById('cBody');
+  const foot   = document.getElementById('cFoot');
+  const upsell = document.getElementById('cUpsell');
+  const pip    = document.getElementById('navPip');
+  const cnt    = cartCnt();
+
+  pip.textContent = cnt;
+  pip.classList.toggle('on', cnt > 0);
+
+  if (!CART.length) {
+    body.innerHTML = '<div class="c-empty"><div class="c-empty-ico">🛍️</div><p>Giỏ hàng đang trống</p></div>';
+    foot.style.display   = 'none';
+    upsell.style.display = 'none';
+    updateProg(0);
+    return;
+  }
+
+  body.innerHTML = CART.map((item, i) => `
+    <div class="c-item">
+      <div class="c-item-img"><img src="${item.img}" alt="${item.name}" onerror="this.style.opacity=0"></div>
+      <div style="flex:1;min-width:0">
+        <div class="c-item-name">${item.name}</div>
+        <div class="c-item-price">${item.price}</div>
+        <div class="c-qty">
+          <button class="c-qb" onclick="chgQty(${i},-1)">−</button>
+          <span class="c-qn">${item.qty}</span>
+          <button class="c-qb" onclick="chgQty(${i},1)">+</button>
+          <span class="c-rm" onclick="rmItem(${i})">Xoá</span>
+        </div>
+      </div>
+    </div>`).join('');
+
+  foot.style.display = 'block';
+  document.getElementById('cTotalVal').textContent = toVND(cartSum());
+  upsell.style.display = CART.some(i => i.name.includes('BioShield')) ? 'none' : 'block';
+  updateProg(cartSum());
+}
+
+function updateProg(total) {
+  document.getElementById('progFill').style.width = Math.min(100, (total / SHIP) * 100) + '%';
+  const r = SHIP - total;
+  document.getElementById('progTxt').innerHTML = r > 0
+    ? `Thêm <strong>${toVND(r)}</strong> để được freeship`
+    : `🎉 Bạn được <strong>miễn phí vận chuyển</strong>`;
+}
+
+function chgQty(i, d) { CART[i].qty += d; if (CART[i].qty <= 0) CART.splice(i, 1); renderCart() }
+function rmItem(i)     { CART.splice(i, 1); renderCart() }
+
+function openCart() {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('cartBtn').addEventListener('click', openCart);
+
+/* ─────────────────────────────────────────────
+   SOCIAL PROOF TOAST
+───────────────────────────────────────────── */
+const PROOFS = [
+  ['Lan Anh',     'vừa đặt Gối Ngủ CoolTouch®'],
+  ['Minh Trần',   'vừa mua Chăn Waffle + Gối'],
+  ['Thảo Phạm',   'vừa đặt Gối Ôm Body'],
+  ['Khoa Nguyễn', 'vừa mua Đệm Ngồi + Vỏ Gối'],
+  ['Bích Ngọc',   'vừa đặt Bộ Combo Phòng Ngủ'],
+  ['Hùng Lê',     'vừa mua Máy Tiếng Ồn Trắng'],
+  ['Thu Hương',   'vừa đặt Ga Trải Giường CoolTouch®'],
+];
+let proofIdx = 0;
+
+function showToast(name) {
+  const el = document.getElementById('toast');
+  const p  = PROOFS[proofIdx++ % PROOFS.length];
+  document.getElementById('toast-name').textContent = name ? 'Bạn' : p[0];
+  document.getElementById('toast-item').textContent = name ? 'vừa thêm vào giỏ hàng' : p[1];
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 5000);
+}
+setTimeout(() => { showToast(null); setInterval(() => showToast(null), 32000) }, 12000);
+
+/* ─────────────────────────────────────────────
+   NEWSLETTER
+───────────────────────────────────────────── */
+function handleNL() {
+  const inp = document.getElementById('nlEmail');
+  const btn = document.getElementById('nlBtn');
+  const val = inp.value.trim();
+  if (!val || !val.includes('@') || !val.includes('.')) {
+    inp.style.borderColor = 'var(--err)';
+    inp.style.boxShadow   = '0 0 0 3px rgba(170,43,43,.12)';
+    setTimeout(() => { inp.style.borderColor = ''; inp.style.boxShadow = '' }, 2500);
+    return;
+  }
+  btn.textContent      = '✓ Đã gửi — kiểm tra email!';
+  btn.style.background = 'var(--ok)';
+  inp.value            = '';
+  setTimeout(() => { btn.textContent = 'Nhận mã 10%'; btn.style.background = '' }, 5500);
+}
+
+/* ─────────────────────────────────────────────
+   SMOOTH SCROLL
+───────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
+  });
+});
+
+/* ─────────────────────────────────────────────
+   REMOVE INTRO AFTER ANIMATION
+───────────────────────────────────────────── */
+document.getElementById('page-intro').addEventListener('animationend', function() {
+  this.style.display = 'none';
+});
+
+/* ─────────────────────────────────────────────
+   AI CHATBOT — Rule-based, runs 100% local
+   No API key needed, no CORS issues
+───────────────────────────────────────────── */
+const KB = [
+  {
+    keys: ['nóng','nóng bức','hay nóng','đổ mồ hôi','nóng khi ngủ','bí','bức'],
+    reply: 'Bạn hay nóng khi ngủ thì Gối Ngủ CoolTouch® là lựa chọn số 1. Lớp vải dẫn nhiệt giúp bề mặt mát hơn cotton 3–5°C ngay khi chạm — không cần điều hòa. Nếu muốn mát cả người thì thêm Chăn Mùa Hạ Waffle, thoáng khí tối đa. Cả hai đang có giá ưu đãi tại trang Sản phẩm.'
+  },
+  {
+    keys: ['trẻ em','em bé','trẻ nhỏ','sơ sinh','bé','con nhỏ'],
+    reply: 'Toàn bộ sản phẩm Coolify đều đạt chuẩn Oeko-Tex® Standard 100 — không chứa hoá chất độc hại, an toàn cho trẻ sơ sinh và da nhạy cảm. AirGuard™ bên trong giúp lõi gối luôn khô thoáng, hạn chế vi khuẩn — rất phù hợp cho bé. Gối Ngủ CoolTouch® (690K) hoặc Vỏ Gối (290K) là lựa chọn được nhiều mẹ tin dùng nhất.'
+  },
+  {
+    keys: ['airguard','air guard','khác gì','lõi','bên trong','hygiene','sạch','vi khuẩn','mùi','hôi'],
+    reply: 'AirGuard™ là công nghệ lõi gối — giữ không khí lưu chuyển bên trong, hạn chế tích tụ ẩm (nguyên nhân chính gây mùi và vi khuẩn). Gối thường sau vài tháng bắt đầu có mùi vì ẩm tích tụ bên trong. Gối Coolify với AirGuard™ giải quyết đúng vấn đề đó mà bạn không cần làm gì thêm.'
+  },
+  {
+    keys: ['đau cổ','cứng cổ','đau vai','đau lưng','cột sống','tư thế','nâng đỡ'],
+    reply: 'Đau cổ thường do gối không nâng đỡ đúng đường cong tự nhiên của cột sống. Gối Ngủ CoolTouch® dùng foam 50D mật độ cao — đàn hồi 100% sau mỗi đêm, không lún vẹo. Nếu bạn hay nằm nghiêng, Gối Ôm Body (890K) còn giúp giảm áp lực thêm cho hông và vai. Bạn đang nằm sấp, ngửa hay nghiêng?'
+  },
+  {
+    keys: ['bảo quản','vệ sinh','giặt','wash','làm sạch','chăm sóc'],
+    reply: 'Giặt máy bình thường ở 40°C, không tẩy, không sấy nhiệt cao. CoolTouch® và AirGuard™ bền 300+ lần giặt mà vẫn giữ nguyên hiệu quả. Nên phơi ở nơi thoáng gió sau giặt. Nếu muốn vệ sinh nhanh giữa các lần giặt, Xịt Kháng Khuẩn BioShield™ (390K) diệt 99.9% vi khuẩn trong 30 giây, không cần rửa lại.'
+  },
+  {
+    keys: ['giá','bao nhiêu tiền','chi phí','price','rẻ','đắt','discount','giảm giá','khuyến mãi'],
+    reply: 'Giá sản phẩm Coolify: Gối Ngủ CoolTouch® 690K (sale từ 890K), Gối Ôm Body 890K, Gối Tựa Lưng 590K, Đệm Ngồi 490K, Vỏ Gối 290K, Chăn Mùa Đông 1.290K, Chăn Mùa Hạ Waffle 890K, Ga Trải Giường 790K. Freeship đơn từ 500K. Đổi trả 30 ngày miễn phí. Bạn quan tâm sản phẩm nào cụ thể?'
+  },
+  {
+    keys: ['giao hàng','ship','vận chuyển','bao lâu','khi nào','nhận hàng'],
+    reply: 'Coolify giao hàng trong 24 giờ cho TP.HCM và Hà Nội, 1–3 ngày cho các tỉnh thành khác. Miễn phí vận chuyển đơn từ 500.000đ. Đơn dưới 500K phí ship từ 20K–35K tùy khu vực. Sau khi đặt hàng bạn sẽ nhận mã theo dõi đơn qua SMS.'
+  },
+  {
+    keys: ['đổi trả','hoàn tiền','trả hàng','đổi hàng','không hài lòng','refund'],
+    reply: 'Coolify có chính sách đổi trả 30 ngày hoàn toàn miễn phí — không cần lý do. Gọi hotline 1800 1234 (8h–22h) hoặc nhắn tin qua chat, đội ngũ sẽ xử lý trong 24 giờ. Chúng tôi thu gói về tận nơi, không phát sinh chi phí nào cho bạn.'
+  },
+  {
+    keys: ['chăn','mền','blanket','waffle','mùa hạ','mùa hè','nóng chăn'],
+    reply: 'Cho thời tiết nóng hoặc ngủ điều hòa, Chăn Mùa Hạ Waffle (890K) là lựa chọn tốt nhất — vải waffle thoáng khí tối đa, mát và nhẹ nhưng vẫn có cảm giác "đắp chăn" dễ chịu. Cho mùa lạnh hoặc phòng máy lạnh thấp, Chăn Mùa Đông CoolTouch® (1.290K, sale từ 1.590K) vừa ấm vừa không bí bức.'
+  },
+  {
+    keys: ['ga','bed sheet','ga giường','trải giường'],
+    reply: 'Ga Trải Giường CoolTouch® (790K) vừa vặn nệm dày đến 30cm, co giãn 4 chiều không bị tuột góc. Vải CoolTouch® giúp bề mặt nằm luôn mát. Giặt 300+ lần không phai màu. Hiện có size từ đơn đến king — bạn cần size nào?'
+  },
+  {
+    keys: ['máy','tiếng ồn','white noise','âm thanh','ngủ không được','mất ngủ','tinh dầu','aroma','hương'],
+    reply: 'Coolify có hai thiết bị hỗ trợ giấc ngủ: Máy Tiếng Ồn Trắng (890K) với 32 âm thanh thiên nhiên giúp che tiếng ồn đô thị, cải thiện ngủ sâu đến 40%. Máy Khuếch Tán Tinh Dầu (690K) tạo hương thư giãn, hẹn giờ 1–8h. Nếu bạn hay bị tỉnh giấc vì tiếng ồn xung quanh, Máy Tiếng Ồn Trắng sẽ giúp rõ nhất.'
+  },
+  {
+    keys: ['so sánh','tốt hơn','khác nhau','nên chọn','tư vấn','giúp chọn','chọn gối nào'],
+    reply: 'Để tư vấn đúng nhất, cho tôi biết thêm: bạn thường ngủ ở tư thế nào (nằm ngửa, nghiêng, hay sấp)? Và vấn đề chính là gì — hay nóng, đau cổ, hay trằn trọc? Với thông tin đó tôi có thể đề xuất chính xác hơn.'
+  },
+  {
+    keys: ['xin chào','hello','hi','chào','hey','ơi'],
+    reply: 'Xin chào! Tôi là trợ lý tư vấn của Coolify. Bạn đang tìm kiếm giải pháp gì cho giấc ngủ — hay nóng, đau cổ, hay mất ngủ? Hoặc cần tư vấn chọn sản phẩm cụ thể? Cứ hỏi thoải mái nhé.'
+  },
+  {
+    keys: ['cảm ơn','thanks','thank','ok','được rồi','hiểu rồi'],
+    reply: 'Không có gì! Nếu còn thắc mắc về sản phẩm hoặc cần tư vấn thêm, cứ hỏi tôi bất cứ lúc nào. Chúc bạn ngủ ngon 🌙'
+  },
+  {
+    keys: ['bảo hành','warranty','lỗi','hỏng','vấn đề'],
+    reply: 'Coolify bảo hành 2 năm chính hãng cho tất cả sản phẩm. Nếu có lỗi sản xuất, chúng tôi đổi mới hoàn toàn miễn phí. Ngoài ra còn có đổi trả 30 ngày nếu không hài lòng vì bất kỳ lý do gì. Hotline 1800 1234 (8h–22h).'
+  },
+  {
+    keys: ['foam','50d','chất liệu','vải','material','sợi','cotton','polyester'],
+    reply: 'Coolify dùng 3 công nghệ vật liệu: (1) CoolTouch® — sợi dẫn nhiệt cao cấp cho lớp vỏ ngoài, mát 3–5°C so với cotton. (2) AirGuard™ — cấu trúc lõi thoáng khí, chống ẩm và vi khuẩn. (3) Foam 50D mật độ cao — đàn hồi 100%, không lún vẹo sau nhiều năm dùng. Tất cả đều đạt Oeko-Tex® 100, an toàn tuyệt đối.'
+  }
+];
+
+const FALLBACK = [
+  'Câu hỏi hay đấy! Tôi chưa có thông tin cụ thể về điều đó. Để được tư vấn chi tiết hơn, bạn có thể gọi hotline 1800 1234 (8h–22h) — đội ngũ Coolify sẽ hỗ trợ ngay.',
+  'Tôi chưa chắc chắn về điều này. Bạn thử gọi hotline 1800 1234 hoặc chat trực tiếp với nhân viên tư vấn để được hỗ trợ chính xác hơn nhé.',
+  'Câu hỏi này cần tư vấn cụ thể hơn. Hotline 1800 1234 (8h–22h) sẽ giúp bạn nhanh nhất. Hoặc bạn có thể hỏi tôi về sản phẩm, chất liệu, hoặc vấn đề giấc ngủ cụ thể.'
+];
+
+let fbIdx = 0;
+
+function coolifyReply(msg) {
+  const m = msg.toLowerCase()
+    .replace(/[àáảãạăắằẳẵặâấầẩẫậ]/g,'a')
+    .replace(/[èéẻẽẹêếềểễệ]/g,'e')
+    .replace(/[ìíỉĩị]/g,'i')
+    .replace(/[òóỏõọôốồổỗộơớờởỡợ]/g,'o')
+    .replace(/[ùúủũụưứừửữự]/g,'u')
+    .replace(/[ỳýỷỹỵ]/g,'y')
+    .replace(/đ/g,'d');
+
+  for (const item of KB) {
+    if (item.keys.some(k => {
+      const kn = k.toLowerCase()
+        .replace(/[àáảãạăắằẳẵặâấầẩẫậ]/g,'a')
+        .replace(/[èéẻẽẹêếềểễệ]/g,'e')
+        .replace(/[ìíỉĩị]/g,'i')
+        .replace(/[òóỏõọôốồổỗộơớờởỡợ]/g,'o')
+        .replace(/[ùúủũụưứừửữự]/g,'u')
+        .replace(/[ỳýỷỹỵ]/g,'y')
+        .replace(/đ/g,'d');
+      return m.includes(kn);
+    })) {
+      return item.reply;
+    }
+  }
+  const fb = FALLBACK[fbIdx % FALLBACK.length];
+  fbIdx++;
+  return fb;
+}
+
+let aiLoading = false;
+
+function appendMsg(role, text) {
+  const box = document.getElementById('aiMessages');
+  const div = document.createElement('div');
+  div.className = 'ai-msg ' + (role === 'user' ? 'ai-msg-user' : 'ai-msg-bot');
+  const avatar = document.createElement('div');
+  avatar.className = 'ai-msg-avatar';
+  avatar.textContent = role === 'user' ? '↑' : '✦';
+  const bubble = document.createElement('div');
+  bubble.className = 'ai-msg-bubble';
+  bubble.textContent = text;
+  div.appendChild(avatar);
+  div.appendChild(bubble);
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function showTyping() {
+  const box = document.getElementById('aiMessages');
+  const div = document.createElement('div');
+  div.className = 'ai-msg ai-msg-bot';
+  div.id = 'aiTyping';
+  div.innerHTML = '<div class="ai-msg-avatar">✦</div><div class="ai-msg-bubble"><div class="ai-typing"><span></span><span></span><span></span></div></div>';
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('aiTyping');
+  if (t) t.remove();
+}
+
+function sendAI() {
+  if (aiLoading) return;
+  const inp = document.getElementById('aiInput');
+  const btn = document.getElementById('aiSendBtn');
+  const msg = inp.value.trim();
+  if (!msg) return;
+
+  inp.value = '';
+  appendMsg('user', msg);
+  showTyping();
+  aiLoading = true;
+  btn.classList.add('loading');
+
+  // Simulate natural typing delay 800ms–1.4s
+  const delay = 800 + Math.random() * 600;
+  setTimeout(() => {
+    removeTyping();
+    appendMsg('bot', coolifyReply(msg));
+    aiLoading = false;
+    btn.classList.remove('loading');
+  }, delay);
+}
+
+function sendQuick(el) {
+  document.getElementById('aiInput').value = el.textContent;
+  sendAI();
+}
+
+/* ─────────────────────────────────────────────
+   CHECKOUT FLOW
+───────────────────────────────────────────── */
+let selectedShipping = { method: 'standard', cost: 30000 };
+let selectedPayMethod = 'cod';
+let coOrderRef = '';
+
+function openCheckout(method) {
+  if (!CART.length) return;
+  if (method) selectedPayMethod = method;
+  closeCart();
+  renderMiniSummary();
+  renderFinalSummary();
+  updateTransferFields();
+  checkFreeShip();
+  document.getElementById('coOverlay').classList.add('open');
+  document.getElementById('coModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setCoStep(1);
+  if (method) setTimeout(() => goToPayment(), 320);
+}
+
+function closeCheckout() {
+  document.getElementById('coOverlay').classList.remove('open');
+  document.getElementById('coModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function setCoStep(n) {
+  [1,2,3].forEach(i => {
+    const el = document.getElementById('coStep' + i);
+    if (!el) return;
+    el.classList.remove('active','done');
+    if (i < n)  el.classList.add('done');
+    if (i === n) el.classList.add('active');
+    document.getElementById('coPanel' + i)?.classList.toggle('active', i === n);
+  });
+}
+
+function checkFreeShip() {
+  const total = cartSum();
+  const freeOpt = document.getElementById('freeShipOpt');
+  if (!freeOpt) return;
+  freeOpt.style.display = total >= 500000 ? 'flex' : 'none';
+}
+
+function selectShipping(el) {
+  const costs = { standard: 30000, express: 50000, free: 0 };
+  selectedShipping = { method: el.value, cost: costs[el.value] || 0 };
+  renderMiniSummary(); renderFinalSummary(); updateTransferFields();
+  const sv = document.getElementById('cShipVal');
+  if (sv) sv.textContent = selectedShipping.cost === 0 ? 'Miễn phí' : toVND(selectedShipping.cost);
+}
+
+function updateShipping() {}
+
+function renderMiniSummary() {
+  const el = document.getElementById('coMiniSum');
+  if (!el) return;
+  const sub = cartSum(), ship = selectedShipping.cost, total = sub + ship;
+  el.innerHTML = `<div class="co-section-title" style="margin-bottom:10px">Tóm tắt (${cartCnt()} sản phẩm)</div>
+    ${CART.map(i => `<div class="co-mini-row"><span class="co-mini-l">${i.name} ×${i.qty}</span><span class="co-mini-v">${toVND(toInt(i.price)*i.qty)}</span></div>`).join('')}
+    <div class="co-mini-row"><span class="co-mini-l">Tạm tính</span><span class="co-mini-v">${toVND(sub)}</span></div>
+    <div class="co-mini-row"><span class="co-mini-l">Vận chuyển</span><span class="co-mini-v ${ship===0?'free':''}">${ship===0?'Miễn phí':toVND(ship)}</span></div>
+    <div class="co-mini-row"><span class="co-mini-l" style="font-weight:700;color:var(--i0)">Tổng cộng</span><span class="co-mini-v total">${toVND(total)}</span></div>`;
+}
+
+function renderFinalSummary() {
+  const el = document.getElementById('coFinalSum');
+  if (!el) return;
+  const sub = cartSum(), ship = selectedShipping.cost, total = sub + ship;
+  el.innerHTML = `<div class="co-section-title" style="margin-bottom:10px">Chi tiết đơn hàng</div>
+    <div class="co-mini-row"><span class="co-mini-l">Tạm tính</span><span class="co-mini-v">${toVND(sub)}</span></div>
+    <div class="co-mini-row"><span class="co-mini-l">Vận chuyển</span><span class="co-mini-v ${ship===0?'free':''}">${ship===0?'Miễn phí':toVND(ship)}</span></div>
+    <div class="co-mini-row"><span class="co-mini-l" style="font-weight:700;color:var(--i0)">Tổng cộng</span><span class="co-mini-v total">${toVND(total)}</span></div>`;
+}
+
+function updateTransferFields() {
+  const total = cartSum() + selectedShipping.cost;
+  const ref   = 'COOLIFY' + Date.now().toString().slice(-6);
+  coOrderRef  = ref;
+  const refEl = document.getElementById('coTransferRef');
+  const amtEl = document.getElementById('coTransferAmt');
+  if (refEl) refEl.textContent = ref;
+  if (amtEl) amtEl.textContent = toVND(total);
+}
+
+function selectPayMethod(btn) {
+  document.querySelectorAll('.co-pay-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedPayMethod = btn.dataset.method;
+  document.querySelectorAll('.co-method-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('method-' + selectedPayMethod)?.classList.add('active');
+  renderFinalSummary();
+}
+
+function goToPayment() {
+  const fields = ['coName','coPhone','coEmail','coAddr','coCity'];
+  let ok = true;
+  fields.forEach(id => {
+    const f = document.getElementById(id);
+    if (!f || !f.value.trim()) {
+      if (f) { f.classList.add('error'); setTimeout(() => f.classList.remove('error'), 2500) }
+      ok = false;
+    }
+  });
+  if (!ok) {
+    document.getElementById('coName')?.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  if (cartSum() >= 500000) {
+    const fr = document.querySelector('input[name="shipping"][value="free"]');
+    if (fr && !fr.checked) { fr.checked = true; selectShipping(fr) }
+  }
+  renderFinalSummary(); updateTransferFields();
+  setCoStep(2);
+  document.querySelector('.co-body').scrollTop = 0;
+}
+
+function goToInfo() {
+  setCoStep(1);
+  document.querySelector('.co-body').scrollTop = 0;
+}
+
+function confirmOrder() {
+  const btn = document.getElementById('coConfirmBtn');
+  if (!btn) return;
+  btn.textContent = 'Đang xử lý...';
+  btn.disabled = true;
+  setTimeout(() => {
+    const ref   = 'CL' + Date.now().toString().slice(-8).toUpperCase();
+    coOrderRef  = ref;
+    const phone = document.getElementById('coPhone')?.value || '';
+    const addr  = document.getElementById('coAddr')?.value || '';
+    const city  = document.getElementById('coCity');
+    const cityTxt = city?.options[city?.selectedIndex]?.text || '';
+    document.getElementById('coOrderRef').textContent  = ref;
+    document.getElementById('coConfPhone').textContent = phone;
+    document.getElementById('coConfAddr').textContent  = (addr + ', ' + cityTxt).replace(/^, |, $/g,'');
+    setCoStep(3);
+    document.querySelector('.co-body').scrollTop = 0;
+    CART = []; renderCart();
+    btn.textContent = 'Xác nhận đặt hàng';
+    btn.disabled = false;
+  }, 1400);
+}
+
+function copyText(text) { navigator.clipboard?.writeText(text).catch(()=>{}) }
+function copyRef() {
+  const ref = document.getElementById('coTransferRef')?.textContent || '';
+  const btn = document.getElementById('copyRefBtn');
+  navigator.clipboard?.writeText(ref).catch(()=>{});
+  if (btn) { btn.classList.add('copied'); setTimeout(()=>btn.classList.remove('copied'),1800) }
+}
+
+// Patch renderCart to update subtotal line in cart footer
+const _origRC = renderCart;
+renderCart = function() {
+  _origRC();
+  const sv = document.getElementById('cSubVal');
+  if (sv) sv.textContent = toVND(cartSum());
+  const shv = document.getElementById('cShipVal');
+  if (shv) {
+    if (cartSum() >= 500000) { shv.textContent = 'Miễn phí'; shv.classList.add('free') }
+    else { shv.textContent = 'Tính khi đặt hàng'; shv.classList.remove('free') }
+  }
+};
+</script>
+</body>
+</html>
